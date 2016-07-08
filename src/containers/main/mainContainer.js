@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import Navigation from '../../components/navigation/navigation';
 
 const MainContainer = React.createClass({
+  propTypes: {
+    children: PropTypes.node,
+    isAuthenticated: PropTypes.bool.isRequired
+  },
+
   render () {
     return (
       <div>
-        <Navigation />
+        <Navigation isAuthenticated={ this.props.isAuthenticated }/>
         <main>
           { this.props.children }
         </main>
@@ -22,4 +28,6 @@ const MainContainer = React.createClass({
   }
 });
 
-export default MainContainer;
+export default connect(
+  ({ users }) => ({ isAuthenticated: users.isAuthenticated })
+)(MainContainer);
