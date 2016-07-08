@@ -41,7 +41,7 @@ function fetchingUserFailure (error) {
   };
 }
 
-function fetchingUserSuccess (user) {
+export function fetchingUserSuccess (user) {
   return {
     type: FETCHING_USER_SUCCESS,
     user
@@ -155,6 +155,7 @@ export function signiupUser({username, email, password}) {
         console.log('Authed ', res.data);
         localStorage.setItem('token', res.data.token);
         // Redirect user after authenticated
+        dispatch(fetchingUserSuccess(res.data.user))
         hashHistory.push('/create-review');
       })
       .catch((err) => {

@@ -14,7 +14,9 @@ import Signout from './containers/signout/signoutContainer';
 import ReviewForm from './containers/reviewForm/reviewFormContainer';
 
 import * as reducers from 'redux/modules';
-import { AUTH_USER } from './redux/modules/users';
+import { AUTH_USER, fetchingUserSuccess } from './redux/modules/users';
+
+import axios from 'axios';
 
 const store = createStore(combineReducers(reducers), compose(
   applyMiddleware(thunk),
@@ -23,8 +25,22 @@ const store = createStore(combineReducers(reducers), compose(
 
 // Check if the user is authenticated initially
 const token = localStorage.getItem('token');
+let config = {};
+config = {
+  headers: { 'Authorization': `Bearer ${token}` }
+}
+
+// NEED TO FIX,
 if (token) {
   store.dispatch({ type: AUTH_USER });
+  // dispatch fetch
+  axios.get('http://localhost:3000/auth/userdata', config)
+    .then((res) => {
+      store.dispatch(fetchingUserSuccess(res.data));
+    })
+    .catch((err) => {
+      console.log('err: ', err); // NEED TO FIX for error handling
+    });
 }
 
 render(
