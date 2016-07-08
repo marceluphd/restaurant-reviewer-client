@@ -1,12 +1,17 @@
+import axios from 'axios';
+
 const ROOT_URL = 'http://localhost:3000';
 
-const AUTH_USER = 'AUTH_USER';
+export const AUTH_USER = 'AUTH_USER';
 const UNAUTH_USER = 'UNAUTH_USER';
 const AUTH_ERROR = 'AUTH_ERROR';
 const FETCHING_USER = 'FETCHING_USER';
 const FETCHING_USER_FAILURE = 'FETCHING_USER_FAILURE';
 const FETCHING_USER_SUCCESS = 'FETCHING_USER_SUCCESS';
 
+/*
+
+*/
 
 
 function authenticateUser() {
@@ -54,7 +59,7 @@ const initialState = {
   isFetching: false,
   error: '',
   isAuthenticated: false,
-  authedId: '',
+  authedUser: {},
 };
 
 export default function users(state = initialState, action) {
@@ -64,14 +69,14 @@ export default function users(state = initialState, action) {
       return {
         ...state,
         isAuthenticated: true,
-        authedId: action.uid
+        authedUser: action.user
       };
 
     case UNAUTH_USER :
       return {
         ...state,
         isAuthenticated: false,
-        authedId: ''
+        authedUser: {}
       };
 
     case AUTH_ERROR :
@@ -104,7 +109,7 @@ export default function users(state = initialState, action) {
           ...state,
           isFetching: false,
           error: '',
-          user: user(null, action)
+          authedUser: action.user
         };
 
     default:
@@ -112,20 +117,41 @@ export default function users(state = initialState, action) {
   }
 }
 
-const initialUserState = {
-  username: '',
-  email: ''
-};
+// const initialUserState = {
+//   username: '',
+//   email: ''
+// };
+//
+// function user (state = initialUserState, action) {
+//   switch (action.type) {
+//     case FETCHING_USER_SUCCESS :
+//       return {
+//         ...state,
+//         username: action.user.username,
+//         email: action.user.email
+//       };
+//     default :
+//       return state;
+//   }
+// }
 
-function user (state = initialUserState, action) {
-  switch (action.type) {
-    case FETCHING_USER_SUCCESS :
-      return {
-        ...state,
-        username: action.user.username,
-        email: action.user.email
-      };
-    default :
-      return state;
+
+export function signiupUser({username, email, password}) {
+  return function(dispatch) {
+    axios.post(`${ROOT_URL}/api/users`, {username, email, password})
+      .then((res) => {
+        // If request is correct
+        // Update the state (authenticated)
+        dispatch({type: AUTH_USER});
+        // Save JWT Token in localStorage
+        console.log('Authed ', res.data);
+        localStorage.setItem('token', res.data.token);
+      })
+      .catch((err) => {
+        console.log('[signiupUser err]', err);
+        // If request is incorrect
+        // Show user the error
+        dispatch(authenticationError(err.data.error || err.data));
+      });
   }
 }

@@ -8,10 +8,10 @@ export default function Navigation() {
         <a href="#">HOME</a>
         <Link to="/create-review" className="nav-link">Create Review</Link>
 
-        {/*<div className="float-right">
+        <div className="float-right">
           <Link to="/signup" className="nav-link">Sign up</Link>
           <Link to="/signin" className="nav-link">Sign in</Link>
-        </div>*/}
+        </div>
 
         <div className="float-right">
           {/*<Link to="/account" className="nav-link">My Account</Link>*/}
