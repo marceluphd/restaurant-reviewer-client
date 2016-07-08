@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { hashHistory } from 'react-router';
 
 const ROOT_URL = 'http://localhost:3000';
 
@@ -135,6 +136,13 @@ export default function users(state = initialState, action) {
 //   }
 // }
 
+export function signoutUser() {
+  return function(dispatch) {
+    localStorage.removeItem('token');
+    dispatch(unauthUser());
+  };
+}
+
 
 export function signiupUser({username, email, password}) {
   return function(dispatch) {
@@ -146,6 +154,8 @@ export function signiupUser({username, email, password}) {
         // Save JWT Token in localStorage
         console.log('Authed ', res.data);
         localStorage.setItem('token', res.data.token);
+        // Redirect user after authenticated
+        hashHistory.push('/create-review');
       })
       .catch((err) => {
         console.log('[signiupUser err]', err);
