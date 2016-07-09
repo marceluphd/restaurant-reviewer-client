@@ -1,18 +1,13 @@
 import React, { PropTypes } from 'react';
-// import Signup from '../../components/signup/signup';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/modules/users';
 
 const SignupContainer = React.createClass({
-  // contextTypes: {
-  //   router: PropTypes.object.isRequired
-  // },
-
   handleFormSubmit(e) {
     e.preventDefault();
 
-    this.props.signiupUser({
+    this.props.signupUser({
       username: this.refs.username.value,
       email: this.refs.email.value,
       password: this.refs.password.value
@@ -44,7 +39,6 @@ const SignupContainer = React.createClass({
 });
 
 function mapStateToProps(state) {
-  console.log('[state-signup]', state.users);
   return { errorMessage: state.users.error };
 }
 

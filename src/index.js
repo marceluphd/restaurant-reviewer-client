@@ -1,28 +1,25 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, hashHistory, IndexRoute } from 'react-router';
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import {
+  createStore,
+  applyMiddleware,
+  compose,
+  combineReducers
+} from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-
-import Main from './containers/main/mainContainer';
-import Home from './containers/home/homeContainer';
-import Reviews from './containers/reviews/reviewsContainer';
-import Signup from './containers/signup/signupContainer';
-import Signin from './containers/signin/signinContainer';
-import Signout from './containers/signout/signoutContainer';
-import ReviewForm from './containers/reviewForm/reviewFormContainer';
+import axios from 'axios';
 
 import * as reducers from 'redux/modules';
 import {
-  AUTH_USER,
+  ROOT_URL,
   authenticateUser,
   fetchingUser,
   fetchingUserSuccess,
   fetchingUserFailure
 } from './redux/modules/users';
-
-import axios from 'axios';
+import getRoutes from './config/routes';
+import { checkIfAuthenticated } from './helpers/utils';
 
 const store = createStore(combineReducers(reducers), compose(
   applyMiddleware(thunk),
@@ -42,7 +39,7 @@ config = {
 if (token) {
   store.dispatch(authenticateUser());
   store.dispatch(fetchingUser());
-  axios.get('http://localhost:3000/auth/userdata', config)
+  axios.get(`${ROOT_URL}/auth/userdata`, config)
     .then((res) => {
       store.dispatch(fetchingUserSuccess(res.data));
     })
@@ -51,19 +48,26 @@ if (token) {
     });
 }
 
+// Check if user is authenticated before letting the user
+// access to certain routes
+function checkAuthentication(nextState, replace) {
+  const isAuthenticated = checkIfAuthenticated(store, token);
+  const nextPathName = nextState.location.pathname;
+
+  if (nextPathName === '/' || nextPathName === '/signin') {
+    if (isAuthenticated === true) {
+      replace('/create-review');
+    }
+  } else {
+    if (isAuthenticated !== true) {
+      replace('/signin');
+    }
+  }
+}
+
 render(
   <Provider store={store}>
-    <Router history={hashHistory}>
-      <Route path='/' component={Main}>
-        <IndexRoute component={Reviews} />
-        <Route path='/signup' component={Signup} />
-        <Route path='/signin' component={Signin} />
-        <Route path='/signout' component={Signout} />
-        <Route path='/create-review' component={ReviewForm} />
-
-        <Route path="*" component={Home}/>
-      </Route>
-    </Router>
+    {getRoutes(checkAuthentication)}
   </Provider>,
   document.getElementById('app')
 )
