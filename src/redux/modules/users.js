@@ -15,7 +15,7 @@ const FETCHING_USER_SUCCESS = 'FETCHING_USER_SUCCESS';
 */
 
 
-function authenticateUser() {
+export function authenticateUser() {
   return {
     type: AUTH_USER
   }
@@ -28,13 +28,13 @@ export function authenticationError(error) {
   };
 };
 
-function fetchingUser() {
+export function fetchingUser() {
   return {
     type: FETCHING_USER
   };
 }
 
-function fetchingUserFailure (error) {
+export function fetchingUserFailure (error) {
   return {
     type: FETCHING_USER_FAILURE,
     error: 'Error fetching user.'

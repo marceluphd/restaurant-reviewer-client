@@ -14,7 +14,13 @@ import Signout from './containers/signout/signoutContainer';
 import ReviewForm from './containers/reviewForm/reviewFormContainer';
 
 import * as reducers from 'redux/modules';
-import { AUTH_USER, fetchingUserSuccess } from './redux/modules/users';
+import {
+  AUTH_USER,
+  authenticateUser,
+  fetchingUser,
+  fetchingUserSuccess,
+  fetchingUserFailure
+} from './redux/modules/users';
 
 import axios from 'axios';
 
@@ -30,16 +36,18 @@ config = {
   headers: { 'Authorization': `Bearer ${token}` }
 }
 
-// NEED TO FIX,
+// Initial load of page or when user refresh the page,
+// if user is already signed in, user has the token.
+// So go ahead fetch the user data from the server
 if (token) {
-  store.dispatch({ type: AUTH_USER });
-  // dispatch fetch
+  store.dispatch(authenticateUser());
+  store.dispatch(fetchingUser());
   axios.get('http://localhost:3000/auth/userdata', config)
     .then((res) => {
       store.dispatch(fetchingUserSuccess(res.data));
     })
     .catch((err) => {
-      console.log('err: ', err); // NEED TO FIX for error handling
+      store.dispatch(fetchingUserFailure(err));
     });
 }
 
