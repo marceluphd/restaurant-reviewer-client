@@ -12,14 +12,14 @@ import axios from 'axios';
 
 import * as reducers from 'redux/modules';
 import {
-  ROOT_URL,
   authenticateUser,
   fetchingUser,
   fetchingUserSuccess,
   fetchingUserFailure
 } from './redux/modules/users';
 import getRoutes from './config/routes';
-import { checkIfAuthenticated } from './helpers/utils';
+import { ROOT_URL } from './config/constants';
+import { checkIfAuthenticated, setHeaders } from './helpers/utils';
 
 const store = createStore(combineReducers(reducers), compose(
   applyMiddleware(thunk),
@@ -28,10 +28,10 @@ const store = createStore(combineReducers(reducers), compose(
 
 // Check if the user is authenticated initially
 const token = localStorage.getItem('token');
-let config = {};
-config = {
-  headers: { 'Authorization': `Bearer ${token}` }
-}
+// let config = {};
+// config = {
+//   headers: { 'Authorization': `Bearer ${token}` }
+// }
 
 // Initial load of page or when user refresh the page,
 // if user is already signed in, user has the token.
@@ -39,7 +39,7 @@ config = {
 if (token) {
   store.dispatch(authenticateUser());
   store.dispatch(fetchingUser());
-  axios.get(`${ROOT_URL}/auth/userdata`, config)
+  axios.get(`${ROOT_URL}/auth/userdata`, setHeaders())
     .then((res) => {
       store.dispatch(fetchingUserSuccess(res.data));
     })

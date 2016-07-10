@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { hashHistory } from 'react-router';
 
-export const ROOT_URL = 'http://localhost:3000';
+// export const ROOT_URL = 'http://localhost:3000';
+import { ROOT_URL } from '../../config/constants';
 
 const AUTH_USER = 'AUTH_USER';
 const UNAUTH_USER = 'UNAUTH_USER';
@@ -60,7 +61,7 @@ const initialState = {
 };
 
 // Users reducer
-export default function users(state = initialState, action) {
+export default function usersReducer(state = initialState, action) {
   switch(action.type) {
 
     case AUTH_USER :
