@@ -12,7 +12,7 @@ export default function getRoutes(checkAuthentication) {
   return (
     <Router history={hashHistory}>
       <Route path='/' component={Main}>
-        <IndexRoute component={Reviews} />
+        <IndexRoute component={Home} />
         <Route path='/signup' component={Signup} />
         <Route path='/signin' component={Signin} />
         <Route path='/signout' component={Signout} />

@@ -22,18 +22,18 @@ const ReviewFormContainer = React.createClass({
         comment={ this.props.comment }
         rating={ this.props.rating }
         updateComment={ this.props.updateComment }
-        updateRating={ this.props.updateRating }/>
+        updateRating={ this.props.updateRating }
+        error={ this.props.error }/>
     );
   }
 });
 
 function mapStateToProps ({reviewForm}) {
-  // console.log('mapStateToProps =>', state);
-  // console.log('review =>'. review);
   return {
     comment: reviewForm.comment,
     rating: reviewForm.rating,
-    restaurantId: reviewForm.restaurantId
+    restaurantId: reviewForm.restaurantId,
+    error: reviewForm.error
   };
 }
 
