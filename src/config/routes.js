@@ -7,6 +7,7 @@ import Signup from '../containers/signup/signupContainer';
 import Signin from '../containers/signin/signinContainer';
 import Signout from '../containers/signout/signoutContainer';
 import ReviewForm from '../containers/reviewForm/reviewFormContainer';
+import RestaurantOne from '../containers/RestaurantOne/RestaurantOneContainer';
 
 export default function getRoutes(checkAuthentication) {
   return (
@@ -16,7 +17,8 @@ export default function getRoutes(checkAuthentication) {
         <Route path='/signup' component={Signup} />
         <Route path='/signin' component={Signin} />
         <Route path='/signout' component={Signout} />
-        <Route path='/create-review' component={ReviewForm} onEnter={checkAuthentication}/>
+        <Route path='/restaurants/:id' component={RestaurantOne} /> 
+        <Route path='/restaurants/:id/create-review' component={ReviewForm} onEnter={checkAuthentication}/>
 
         <Route path="*" component={Home}/>
       </Route>
