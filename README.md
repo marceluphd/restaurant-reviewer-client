@@ -16,7 +16,7 @@ Reviews including
 
 The application must include
 - an application header
-- a menu providing multiple ways to filter the restaurants
+- a menu providing multiple ways to filter the restaurants (Category, Ratings)
 
 When viewing a specific restaurant, current reviews are displayed along with a form for the user to submit their own review.
 

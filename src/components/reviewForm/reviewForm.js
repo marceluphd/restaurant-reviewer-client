@@ -9,10 +9,9 @@ ReviewForm.propTypes = {
 };
 
 export default function ReviewForm(props) {
-  console.log(props);
   function handleFormSubmit(e) {
     e.preventDefault();
-    props.createReview(props.comment, props.rating);
+    props.createReview(props.restaurantId, props.comment, props.rating);
   }
 
   return (

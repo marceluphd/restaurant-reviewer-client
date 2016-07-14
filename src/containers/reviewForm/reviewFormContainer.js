@@ -8,7 +8,6 @@ const ReviewFormContainer = React.createClass({
   propTypes: {
     comment: PropTypes.string.isRequired,
     rating: PropTypes.string.isRequired,
-    restaurantId: PropTypes.string.isRequired,
     updateComment: PropTypes.func.isRequired,
     updateRating: PropTypes.func.isRequired,
     createReview: PropTypes.func.isRequired
@@ -18,7 +17,7 @@ const ReviewFormContainer = React.createClass({
     return (
       <ReviewForm
         createReview= { this.props.createReview }
-        restaurantId={ this.props.restaurantId }
+        restaurantId={ this.props.params.id }
         comment={ this.props.comment }
         rating={ this.props.rating }
         updateComment={ this.props.updateComment }
@@ -32,7 +31,6 @@ function mapStateToProps ({reviewForm}) {
   return {
     comment: reviewForm.comment,
     rating: reviewForm.rating,
-    restaurantId: reviewForm.restaurantId,
     error: reviewForm.error
   };
 }

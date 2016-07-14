@@ -1,22 +1,24 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 const { object, string, func, bool } = PropTypes;
 
 RestaurantOne.propTypes = {
-
+  restaurant: object.isRequired
 };
 
 export default function RestaurantOne(props) {
+  // Render array of restaurant reviews
   function renderReviews(){
     if (props.restaurant.reviews.length > 0) {
       return props.restaurant.reviews.map((r) => {
         return <div key={r._id}>
-          <p>{r.comment}</p>
-          <p>{r.author.username}</p>
+          <p>{r.comment} by {r.author.username}</p>
         </div>;
       });
     }
   }
 
+  // Render restaurant information + reviews
   return props.isFetching === true
     ? <h2 className='header'>{ 'Fetching' }</h2>
     : <div>
@@ -40,6 +42,8 @@ export default function RestaurantOne(props) {
               ? 'None' 
               : (props.restaurant.total_ratings / props.restaurant.reviews.length)} ({props.restaurant.reviews.length} reviews)
             </p>
+            <Link to={'/restaurants/' + props.restaurant._id + '/create-review'}>Create Review</Link>
+            <hr />
             {renderReviews()}
 
           </div>}

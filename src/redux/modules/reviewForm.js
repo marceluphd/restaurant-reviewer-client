@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { hashHistory } from 'react-router';
 import { ROOT_URL } from '../../config/constants';
 import { setHeaders } from '../../helpers/utils';
 
@@ -40,7 +41,6 @@ function submissionError (error) {
 const initialState = {
   comment: '',
   rating: '',
-  restaurantId: '10',
   error: ''
 };
 
@@ -80,14 +80,15 @@ export default function reviewFormReducer(state = initialState, action) {
 }
 
 // Handlers
-export function createReview(comment, rating) {
-  console.log(comment, rating);
+export function createReview(restaurantId, comment, rating) {
+  console.log(restaurantId, comment, rating);
   return function(dispatch) {
-    axios.post(`${ROOT_URL}/api/reviews/create-review`, {comment, rating}, setHeaders())
+    axios.post(`${ROOT_URL}/api/reviews/${restaurantId}/create-review`, {comment, rating}, setHeaders())
       .then((res) => {
         // Successfully submitted
         // console.log('[createReview res]', res)
         dispatch(submitted_successfully());
+        hashHistory.push(`/restaurants/${restaurantId}`);
       })
       .catch((err) => {
         // Got error on submission

@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-const { object, string, func, bool } = PropTypes;
+const { object, string, func, bool, array } = PropTypes;
 
 Restaurant.propTypes = {
-
+  restaurants: array.isRequired
 };
 
 export default function Restaurant(props) {
