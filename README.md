@@ -1,35 +1,34 @@
 ## Restaurant Reviewer
+Accessibility first restaurant reviewer application
 
-- Accessibility first app
-
-The application includes:
-- Restaurant names
-- A photograph
-- Address
-- Operating hours for each restaurant along with
-
-Reviews including
-- the name of the reviewer
-- date of review
-- 5-star rating system
-- comments
-
-The application must include
-- an application header
-- a menu providing multiple ways to filter the restaurants (Category, Ratings)
-
-When viewing a specific restaurant, current reviews are displayed along with a form for the user to submit their own review.
-
-- [Project specification](https://github.com/udacity/Project-Descriptions-for-Review/blob/master/Senior%20Web%20Dev/Restaurant%20Reviews.md)
+**Unique Features**
+- User authentication with JWT
+- User can access via keyboards only or screen reader
 
 #### Backend Repo
 - https://github.com/yhagio/restaurant-reviewer-api
 
+
 #### To run locally
 ```
-git clone https://github.com/yhagio/restaurant-reviewer-client
+git clone git@github.com:yhagio/restaurant-reviewer-client.git
 cd restaurant-reviewer-client
 npm install && npm run start
+```
+Then go to `http://localhost:8080/` in your browser.
+
+Backend API is hosted on Heroku :)
+
+#### To run Back-end locally
+```
+git clone git@github.com:yhagio/restaurant-reviewer-api.git
+cd restaurant-reviewer-api
+npm install
+mongod
+```
+Then open another tab in terminal
+```
+npm run start
 ```
 
 ### Tools

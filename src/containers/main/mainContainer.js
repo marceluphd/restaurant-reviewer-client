@@ -18,7 +18,7 @@ const MainContainer = React.createClass({
         <footer>
           <p className="createdBy">
             Built with
-            <img src="/images/iconmonstr-favorite-4-icon-24.png" alt="heart" className="heartImage" />
+            <img className="heart-img" src="/images/iconmonstr-favorite-4-icon-24.png" alt="heart" className="heartImage" />
             by
             <a href="https://github.com/yhagio" className="nameLink" target="_blank">Yuichi Hagio</a>
           </p>
