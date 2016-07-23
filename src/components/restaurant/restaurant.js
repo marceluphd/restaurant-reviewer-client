@@ -13,7 +13,14 @@ export default function Restaurant(props) {
     ? <h2 className='header'>{ 'Fetching' }</h2>
     : <div>
         { props.restaurants.length === 0 ? <p>{'No restaurants found.'}</p> : null }
-        <input type="text" name="search" placeholder="Search Keyword" onChange={(e) => props.filterRestaurants(e.target.value)}/>
+        <input type="text" name="search" placeholder="Search Keyword" value={props.searchText} onChange={(e) => props.searchRestaurants(e.target.value)}/>
+        <select value={props.searchCategory} onChange={(e) => props.filterRestaurantsByCategory(e.target.value)} >
+          <option value="default">Category</option>
+          <option value="French">French</option>
+          <option value="Japanese">Japanese</option>
+          <option value="Mexican">Mexican</option>
+          <option value="Korean">Korean</option>
+        </select>
         { props.restaurants.map((res) => (
           <Link to={`restaurants/${res._id}`} key={res._id}>
             <h4>{ res.name }</h4>

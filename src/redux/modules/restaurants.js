@@ -5,7 +5,8 @@ import { setHeaders } from '../../helpers/utils';
 const FETCHING_RESTAURANTS = 'FETCHING_RESTAURANTS';
 const FETCHING_RESTAURANTS_ERROR = 'FETCHING_RESTAURANTS_ERROR';
 const FETCHING_RESTAURANTS_SUCCESS = 'FETCHING_RESTAURANTS_SUCCESS';
-const FILTER_RESTAURANTS = 'FILTER_RESTAURANTS';
+const SEARCH_RESTAURANTS = 'SEARCH_RESTAURANTS';
+const FILTER_RESTAURANTS_CATEGORY = 'FILTER_RESTAURANTS_CATEGORY';
 
 function fetchingRestaurants () {
   return {
@@ -27,13 +28,19 @@ function fetchingRestaurantsSuccess (restaurants) {
   };
 }
 
-export function filterRestaurants (searchText) {
+export function searchRestaurants (searchText) {
   return {
-    type: FILTER_RESTAURANTS,
+    type: SEARCH_RESTAURANTS,
     searchText
   };
 }
 
+export function filterRestaurantsByCategory (searchCategory) {
+  return {
+    type: FILTER_RESTAURANTS_CATEGORY,
+    searchCategory
+  }
+}
 
 
 export function fetchRestaurants() {
@@ -49,12 +56,20 @@ export function fetchRestaurants() {
   };
 }
 
-function getFilteredRestaurants(restaurants, searchText) {  
-  if (!searchText) return restaurants;
+function getFilteredRestaurants(restaurants, searchText, searchCategory) { 
+  if (searchText) {
+    return restaurants.filter((r) => {
+      return (r.name.toLowerCase().indexOf(searchText.toLowerCase()) >= 0);
+    });
+  }
 
-  return restaurants.filter((r) => {
-    return (r.name.toLowerCase().indexOf(searchText.toLowerCase()) >= 0);
-  });
+  if (searchCategory && searchCategory !== 'default') {
+    return restaurants.filter((r) => {
+      return (r.category.toLowerCase().indexOf(searchCategory.toLowerCase()) >= 0);
+    }); 
+  }
+
+  return restaurants;
 }
 
 const initialState = {
@@ -62,6 +77,7 @@ const initialState = {
   error: '',
   isFetching: false,
   searchText: '',
+  searchCategory: 'default',
   filteredRes: []
 };
 
@@ -90,11 +106,20 @@ export default function restaurants (state = initialState, action) {
         filteredRes: action.restaurants
       };
     
-    case FILTER_RESTAURANTS :
+    case SEARCH_RESTAURANTS :
       return {
         ...state,
         searchText: action.searchText,
-        filteredRes: getFilteredRestaurants(state.restaurants, action.searchText)
+        searchCategory: 'default',
+        filteredRes: getFilteredRestaurants(state.restaurants, action.searchText, null)
+      }
+    
+    case FILTER_RESTAURANTS_CATEGORY :
+      return {
+        ...state,
+        searchCategory: action.searchCategory,
+        searchText: '',
+        filteredRes: getFilteredRestaurants(state.restaurants, null, action.searchCategory)
       }
 
     default :
