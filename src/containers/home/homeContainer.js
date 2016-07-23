@@ -6,7 +6,7 @@ import Restaurant from '../../components/restaurant/restaurant';
 
 const HomeContainer = React.createClass({
   propTypes: {
-    restaurants: PropTypes.array.isRequired,
+    // restaurants: PropTypes.array.isRequired,
     isFetching: PropTypes.bool.isRequired
   },
 
@@ -18,9 +18,10 @@ const HomeContainer = React.createClass({
     return (
       <main>
         <Restaurant
-          restaurants={ this.props.restaurants }
+          restaurants={ this.props.filteredRes }
           isFetching={ this.props.isFetching }
-          error={ this.props.error } />
+          error={ this.props.error }
+          filterRestaurants={ this.props.filterRestaurants } />
       </main>
     );
   }
@@ -28,9 +29,10 @@ const HomeContainer = React.createClass({
 
 function mapStateToProps({restaurants}) {
   return {
-    restaurants: restaurants.restaurants,
+    filteredRes: restaurants.filteredRes,
     isFetching: restaurants.isFetching,
-    error: restaurants.error
+    error: restaurants.error,
+    searchText: restaurants.searchText
   }
 }
 

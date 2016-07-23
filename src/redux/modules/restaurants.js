@@ -5,6 +5,7 @@ import { setHeaders } from '../../helpers/utils';
 const FETCHING_RESTAURANTS = 'FETCHING_RESTAURANTS';
 const FETCHING_RESTAURANTS_ERROR = 'FETCHING_RESTAURANTS_ERROR';
 const FETCHING_RESTAURANTS_SUCCESS = 'FETCHING_RESTAURANTS_SUCCESS';
+const FILTER_RESTAURANTS = 'FILTER_RESTAURANTS';
 
 function fetchingRestaurants () {
   return {
@@ -26,6 +27,15 @@ function fetchingRestaurantsSuccess (restaurants) {
   };
 }
 
+export function filterRestaurants (searchText) {
+  return {
+    type: FILTER_RESTAURANTS,
+    searchText
+  };
+}
+
+
+
 export function fetchRestaurants() {
   return function(dispatch) {
     dispatch(fetchingRestaurants());
@@ -39,10 +49,20 @@ export function fetchRestaurants() {
   };
 }
 
+function getFilteredRestaurants(restaurants, searchText) {  
+  if (!searchText) return restaurants;
+
+  return restaurants.filter((r) => {
+    return (r.name.toLowerCase().indexOf(searchText.toLowerCase()) >= 0);
+  });
+}
+
 const initialState = {
   restaurants: [],
   error: '',
-  isFetching: false
+  isFetching: false,
+  searchText: '',
+  filteredRes: []
 };
 
 export default function restaurants (state = initialState, action) {
@@ -66,8 +86,16 @@ export default function restaurants (state = initialState, action) {
         ...state,
         isFetching: false,
         error: '',
-        restaurants: action.restaurants
+        restaurants: action.restaurants,
+        filteredRes: action.restaurants
       };
+    
+    case FILTER_RESTAURANTS :
+      return {
+        ...state,
+        searchText: action.searchText,
+        filteredRes: getFilteredRestaurants(state.restaurants, action.searchText)
+      }
 
     default :
       return state;

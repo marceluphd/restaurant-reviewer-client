@@ -8,11 +8,12 @@ Restaurant.propTypes = {
 };
 
 export default function Restaurant(props) {
-  // console.log('restaurants', props.restaurants)
+
   return props.isFetching === true
     ? <h2 className='header'>{ 'Fetching' }</h2>
     : <div>
-        { props.restaurants.length === 0 ? <p>{'No restaurants available yet.'}</p> : null }
+        { props.restaurants.length === 0 ? <p>{'No restaurants found.'}</p> : null }
+        <input type="text" name="search" placeholder="Search Keyword" onChange={(e) => props.filterRestaurants(e.target.value)}/>
         { props.restaurants.map((res) => (
           <Link to={`restaurants/${res._id}`} key={res._id}>
             <h4>{ res.name }</h4>
