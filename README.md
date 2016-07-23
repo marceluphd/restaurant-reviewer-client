@@ -31,7 +31,11 @@ Then open another tab in terminal
 npm run start
 ```
 
-### Tools
+### Resources
+- [Starability.css - Accessible rating with animations on top](https://github.com/LunarLogic/starability)
+- [Star rating widget with pure CSS](http://lea.verou.me/2011/08/accessible-star-rating-widget-with-pure-css/)
+- [Web Accessibility - Custom Controls](https://www.w3.org/WAI/tutorials/forms/custom-controls/)
+
 - [ImageOptim](https://imageoptim.com/mac)
 - [Webpack](http://webpack.github.io/docs/)
 - [PostCSS](http://postcss.org/)

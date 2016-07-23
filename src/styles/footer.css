@@ -1,0 +1,11 @@
+/* Footer */
+footer {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.heart-img {
+  width: 16px;
+  vertical-align: top;
+  margin: 0 3px;
+}
