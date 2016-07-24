@@ -1,22 +1,15 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-
-// ON HOLD FOR NOW:
-// function CreateReview({ isAuthenticated }) {
-//   return isAuthenticated === true
-//     ? <Link to="/create-review" className="nav-link">Create Review</Link>
-//   : <noscript />;
-// }
+import { homeButton, floatRight, navLink } from './style.css';
 
 function Links({ isAuthenticated }) {
   return isAuthenticated === true
-    ? <div className="float-right">
-        {/*<Link to="/account" className="nav-link">My Account</Link>*/}
-        <Link to="/signout" className="nav-link">Sign out</Link>
+    ? <div className={floatRight}>
+        <Link to="/signout" className={ navLink }>Sign out</Link>
       </div>
-    : <div className="float-right">
-        <Link to="/signup" className="nav-link">Sign up</Link>
-        <Link to="/signin" className="nav-link">Sign in</Link>
+    : <div className={floatRight}>
+        <Link to="/signup" className={ navLink }>Sign up</Link>
+        <Link to="/signin" className={ navLink }>Sign in</Link>
       </div>;
 }
 
@@ -24,8 +17,7 @@ export default function Navigation({ isAuthenticated }) {
   return (
     <header>
       <nav>
-        <a href="#">HOME</a>
-        {/*<CreateReview isAuthenticated={ isAuthenticated } />*/}
+        <a href="#" className={ homeButton } >HOME</a>
         <Links isAuthenticated={ isAuthenticated } />
       </nav>
     </header>

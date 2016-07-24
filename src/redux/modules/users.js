@@ -157,7 +157,7 @@ export function signinUser({email, password}) {
         // Update the state (authenticated)
         dispatch(authenticateUser());
         // Save JWT Token in localStorage
-        console.log('Authed ', res.data);
+        // console.log('Authed ', res.data);
         localStorage.setItem('token', res.data.token);
         // Redirect user after authenticated
         dispatch(fetchingUserSuccess(res.data.user))

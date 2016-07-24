@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { starabilityBasic } from '../../styles/rating.css';
+import { starabilityBasic } from './style.css';
 
 const { object, string, func, bool } = PropTypes;
 

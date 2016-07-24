@@ -94,13 +94,13 @@
   height: 30px;
   color: transparent;
   cursor: pointer;
-  background-image: url("../images/icons.png");
+  background-image: url("../../../images/icons.png");
   background-repeat: no-repeat;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 192dpi) {
   .starabilityBasic > label {
-    background-image: url("../images/icons@2x.png");
+    background-image: url("../../../images/icons@2x.png");
     background-size: 30px auto;
   }
 }

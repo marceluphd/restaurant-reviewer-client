@@ -1,8 +1,8 @@
 // Check if user is authenticated
 // used in checkAuthentication() in routes "onEnter"
 export function checkIfAuthenticated(store, token) {
-  console.log('token', token);
-  console.log('user: ', store.getState().users);
+  // console.log('token', token);
+  // console.log('user: ', store.getState().users);
 
   if (!token) {
     return false;
