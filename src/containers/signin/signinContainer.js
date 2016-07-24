@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/modules/users';
-// import Signin from '../../components/signin/signin';
+import { labeled, inputField, submitButton } from './style.css'
 
 const SigninContainer = React.createClass({
   handleFormSubmit(e) {
@@ -19,17 +19,34 @@ const SigninContainer = React.createClass({
       <div>
         <form onSubmit={this.handleFormSubmit}>
 
-          <fieldset className="form-group">
-            <label>Email:</label>
-            <input className="form-control" ref="email" />
-          </fieldset>
-
-          <fieldset className="form-group">
-            <label>Password:</label>
-            <input className="form-control" ref="password" type="password" />
-          </fieldset>
-
-          <button action="submit" className="btn btn-primary">Sign in!</button>
+          <span id="errSignInEmail" className="error"></span>
+          <label className={ labeled }>Email<br />
+          <input
+            id="signInEmail"
+            name="signInEmail"
+            className={ inputField }
+            type="text"
+            placeholder="Your Email"
+            ref="email"
+            required
+            autoFocus />
+          </label><br />
+          
+          <span id="errSignInPassword" className="error"></span>
+          <label className={ labeled }>Password<br />
+          <input
+            id="signInPassword"
+            name="signInPassword"
+            className={ inputField }
+            type="password"
+            placeholder="Secure Password"
+            ref="password"
+            required />
+          </label>
+          
+          <button 
+            action="submit"
+            className={ submitButton }>Sign in!</button>
         </form>
       </div>
     );

@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/modules/users';
+import { labeled, inputField, submitButton } from './style.css'
 
 const SignupContainer = React.createClass({
   handleFormSubmit(e) {
@@ -17,22 +18,46 @@ const SignupContainer = React.createClass({
   render() {
     return (
       <form onSubmit={this.handleFormSubmit}>
-        <fieldset className="form-group">
-          <label>Username:</label>
-          <input className="form-control" ref="username" type="text" />
-        </fieldset>
+         <span id="errSignUpUsername" className="error"></span>
+          <label className={ labeled }>Username<br />
+          <input
+            id="signUpUsername"
+            name="signUpUsername"
+            className={ inputField }
+            type="text"
+            placeholder="Your Username"
+            ref="username"
+            required
+            autoFocus />
+          </label><br />
 
-        <fieldset className="form-group">
-          <label>Email:</label>
-          <input className="form-control" ref="email" />
-        </fieldset>
-
-        <fieldset className="form-group">
-          <label>Password:</label>
-          <input className="form-control" ref="password" type="password" />
-        </fieldset>
-
-        <button action="submit" className="btn btn-primary">Sign up!</button>
+         <span id="errSignUpEmail" className="error"></span>
+          <label className={ labeled }>Email<br />
+          <input
+            id="signUpEmail"
+            name="signUpEmail"
+            className={ inputField }
+            type="text"
+            placeholder="Your Email"
+            ref="email"
+            required />
+          </label><br />
+          
+          <span id="errSignUpPassword" className="error"></span>
+          <label className={ labeled }>Password<br />
+          <input
+            id="signUpPassword"
+            name="signUpPassword"
+            className={ inputField }
+            type="password"
+            placeholder="Secure Password"
+            ref="password"
+            required />
+          </label>
+          
+          <button 
+            action="submit"
+            className={ submitButton }>Sign Up!</button>
       </form>
     );
   }

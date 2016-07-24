@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Navigation from '../../components/navigation/navigation';
+import { wrapper, heartIcon, nameLink } from './style.css';
 
 const MainContainer = React.createClass({
   propTypes: {
@@ -10,7 +11,7 @@ const MainContainer = React.createClass({
 
   render () {
     return (
-      <div>
+      <div className={ wrapper }>
         <Navigation isAuthenticated={ this.props.isAuthenticated }/>
         <main>
           { this.props.children }
@@ -19,13 +20,13 @@ const MainContainer = React.createClass({
           <p className="createdBy">
             Built with
             <img 
-              className="heartIcon"
+              className={ heartIcon }
               src="/images/iconmonstr-favorite-4-icon-24.png"
               alt="Heart Icon"/>
             by
             <a 
               href="https://github.com/yhagio"
-              className="nameLink"
+              className={ nameLink }
               target="_blank">Yuichi Hagio</a>
           </p>
         </footer>
