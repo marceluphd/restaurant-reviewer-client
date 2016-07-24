@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import { homeButton, floatRight, navLink } from './style.css';
+import { homeIcon, homeButton, floatRight, navLink } from './style.css';
 
 function Links({ isAuthenticated }) {
   return isAuthenticated === true
@@ -17,7 +17,9 @@ export default function Navigation({ isAuthenticated }) {
   return (
     <header>
       <nav>
-        <a href="#" className={ homeButton } >HOME</a>
+        <a href="#" className={ homeButton } >
+          <img src="../../../images/iconmonstr-home-6-64.png" className={ homeIcon }/>
+        </a>
         <Links isAuthenticated={ isAuthenticated } />
       </nav>
     </header>

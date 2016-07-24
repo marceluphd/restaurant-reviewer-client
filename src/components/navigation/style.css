@@ -4,10 +4,17 @@ header {
 }
 
 .homeButton {
-  width: 45px;
-  border: 2px solid deepskyblue;
+  /*width: 45px;*/
+  /*border: 2px solid deepskyblue;*/
   padding: 10px;
-  border-radius: 10px;
+  /*border-radius: 10px;*/
+}
+
+.homeIcon {
+  width: 35px;
+  margin: 0;
+  vertical-align: top;
+  margin-top: -10px;
 }
 
 .floatRight {

@@ -21,27 +21,27 @@ const SigninContainer = React.createClass({
 
           <span id="errSignInEmail" className="error"></span>
           <label className={ labeled }>Email<br />
-          <input
-            id="signInEmail"
-            name="signInEmail"
-            className={ inputField }
-            type="text"
-            placeholder="Your Email"
-            ref="email"
-            required
-            autoFocus />
+            <input
+              id="signInEmail"
+              name="signInEmail"
+              className={ inputField }
+              type="text"
+              placeholder="Your Email"
+              ref="email"
+              required
+              autoFocus />
           </label><br />
           
           <span id="errSignInPassword" className="error"></span>
           <label className={ labeled }>Password<br />
-          <input
-            id="signInPassword"
-            name="signInPassword"
-            className={ inputField }
-            type="password"
-            placeholder="Secure Password"
-            ref="password"
-            required />
+            <input
+              id="signInPassword"
+              name="signInPassword"
+              className={ inputField }
+              type="password"
+              placeholder="Secure Password"
+              ref="password"
+              required />
           </label>
           
           <button 

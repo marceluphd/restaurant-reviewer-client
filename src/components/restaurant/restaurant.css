@@ -1,0 +1,21 @@
+.searchInput {
+  height: 35px;
+  border: none;
+  border-bottom: 1px solid deeppink;
+  padding: 5px;
+  width: 170px;
+  font-size: 1.1em;
+  background: url('../../../images/iconmonstr-magnifier-1-24.png') no-repeat right 5px center;
+}
+
+.searchInput:focus,
+.searchInput:active {
+  background: none;
+}
+
+select {
+  border: 1px solid deeppink;
+  height: 45px;
+  margin-left: 5px;
+  padding-left: 10px;
+}

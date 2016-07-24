@@ -20,39 +20,39 @@ const SignupContainer = React.createClass({
       <form onSubmit={this.handleFormSubmit}>
          <span id="errSignUpUsername" className="error"></span>
           <label className={ labeled }>Username<br />
-          <input
-            id="signUpUsername"
-            name="signUpUsername"
-            className={ inputField }
-            type="text"
-            placeholder="Your Username"
-            ref="username"
-            required
-            autoFocus />
+            <input
+              id="signUpUsername"
+              name="signUpUsername"
+              className={ inputField }
+              type="text"
+              placeholder="Your Username"
+              ref="username"
+              required
+              autoFocus />
           </label><br />
 
          <span id="errSignUpEmail" className="error"></span>
           <label className={ labeled }>Email<br />
-          <input
-            id="signUpEmail"
-            name="signUpEmail"
-            className={ inputField }
-            type="text"
-            placeholder="Your Email"
-            ref="email"
-            required />
+            <input
+              id="signUpEmail"
+              name="signUpEmail"
+              className={ inputField }
+              type="text"
+              placeholder="Your Email"
+              ref="email"
+              required />
           </label><br />
           
           <span id="errSignUpPassword" className="error"></span>
           <label className={ labeled }>Password<br />
-          <input
-            id="signUpPassword"
-            name="signUpPassword"
-            className={ inputField }
-            type="password"
-            placeholder="Secure Password"
-            ref="password"
-            required />
+            <input
+              id="signUpPassword"
+              name="signUpPassword"
+              className={ inputField }
+              type="password"
+              placeholder="Secure Password"
+              ref="password"
+              required />
           </label>
           
           <button 
