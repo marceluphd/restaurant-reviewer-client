@@ -1,3 +1,4 @@
+/* Search */
 .searchInput {
   height: 35px;
   border: none;
@@ -13,9 +14,111 @@
   background: none;
 }
 
+/* Category filter */
 select {
   border: 1px solid deeppink;
   height: 45px;
-  margin-left: 5px;
+  margin: 0 0 20px 5px;
   padding-left: 10px;
+}
+
+/* Restaurant list */
+.restaurantCard {
+  border: 1px solid deeppink;
+  border-radius: 10px;
+  /*display: block;*/
+  margin: 10px 0;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+/* Restaurant Card */
+.photoBox {
+  /*border: 1px solid black;*/
+  min-height: 100%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.restaurantImage {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.restoBox {
+  height: 100%;
+  flex-grow: 2;
+  padding: 6px 4px 4px 8px;
+}
+
+.restoBox h4 {
+  line-height: 1;
+  margin: 0 0 5px 0;
+}
+
+.restoBox p {
+  margin: 5px 0 7px;
+  font-size: 0.9em;
+}
+
+.restoBox span {
+  font-size: 0.8em;
+}
+
+/* 5 Star Rating Readonly */
+.starRatings {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 16px;
+  height: 18px;
+  /*width: 100px;*/
+  margin: 3px;
+  position: relative;
+  text-shadow: 0 1px 0 #a2a2a2;
+  display: inline-block;
+} 
+.starRatings::before { 
+  content: '★★★★★';
+  opacity: .7;
+}
+
+[title=".000"]::after {
+  width: 0%;
+}
+[title=".125"]::after {
+  width: 12.5%;
+}
+[title=".250"]::after {
+  width: 25%;
+}
+[title=".375"]::after {
+  width: 37.5%;
+}
+[title=".500"]::after {
+  width: 50%;
+}
+[title=".625"]::after {
+  width: 62.5%;
+}
+[title=".750"]::after {
+  width: 75%;
+}
+[title=".875"]::after {
+  width: 87.5%;
+}
+.starRatings::after {
+  color: orange;
+  content: '★★★★★';
+  text-shadow: 0 1px 0 #ab5414;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  left: 0;
+  top:0;
+  width: attr(rating);
+  overflow: hidden;
 }

@@ -1,12 +1,12 @@
 header {
   margin: 0 0 30px 0;
-  /*border: 1px solid black;*/
 }
 
 .homeButton {
   /*width: 45px;*/
   /*border: 2px solid deepskyblue;*/
   padding: 10px;
+  border: 1px solid #fff;
   /*border-radius: 10px;*/
 }
 
@@ -31,7 +31,10 @@ header {
 }
 
 .homeButton:focus,
-.homeButton:hover,
+.homeButton:hover {
+  border: 1px solid orangered;
+}
+
 .navLink:focus,
 .navLink:hover {
   border: 2px solid orangered;

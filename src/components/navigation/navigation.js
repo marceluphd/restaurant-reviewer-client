@@ -18,7 +18,7 @@ export default function Navigation({ isAuthenticated }) {
     <header>
       <nav>
         <a href="#" className={ homeButton } >
-          <img src="../../../images/iconmonstr-home-6-64.png" className={ homeIcon }/>
+          <img src="../../../images/iconmonstr-home-6-64.png" className={ homeIcon }/> Res Rev
         </a>
         <Links isAuthenticated={ isAuthenticated } />
       </nav>

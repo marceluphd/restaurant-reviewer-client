@@ -2,8 +2,11 @@
 Accessibility first restaurant reviewer application
 
 **Unique Features**
+- Built with React, Redux, React-Router
 - User authentication with JWT
-- User can access via keyboards only or screen reader
+- User can access via keyboards only or screen reader (ARIA)
+- 5 Star rating system (HTML, CSS only)
+- Simple search and filter for finding restaurants
 
 #### Backend Repo
 - https://github.com/yhagio/restaurant-reviewer-api
@@ -36,8 +39,8 @@ npm run start
 - [Star rating widget with pure CSS](http://lea.verou.me/2011/08/accessible-star-rating-widget-with-pure-css/)
 - [Web Accessibility - Custom Controls](https://www.w3.org/WAI/tutorials/forms/custom-controls/)
 
-- [Color COntrast Table](http://www.utdallas.edu/~melacy/pages/2D_Design/Itten_ColorContrasts/IttenColorContrasts.html)
-
+- [Color Contrast Table](http://www.utdallas.edu/~melacy/pages/2D_Design/Itten_ColorContrasts/IttenColorContrasts.html)
+- [Readonly CSS HTML 5 star ratings codepen example](https://codepen.io/yhagio/pen/VjxrJY?editors=1100#0)
 ### Tools
 - [ImageOptim](https://imageoptim.com/mac)
 - [Webpack](http://webpack.github.io/docs/)
