@@ -69,7 +69,7 @@ export default function Restaurant(props) {
               <span>
                 {(res.total_ratings === 0) 
                 ? 'N/A'
-                : (res.total_ratings / res.reviews.length)} ({res.reviews.length} reviews)
+                : Math.round(res.total_ratings / res.reviews.length)} ({res.reviews.length} reviews)
               </span>
             
             </div>
