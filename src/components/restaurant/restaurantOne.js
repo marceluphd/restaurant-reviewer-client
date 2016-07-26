@@ -39,6 +39,8 @@ export default function RestaurantOne(props) {
           </li>
         );
       });
+    } else {
+      return 'None yet. You wanna write one?';
     }
   }
 
