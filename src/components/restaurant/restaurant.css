@@ -122,3 +122,77 @@ select {
   width: attr(rating);
   overflow: hidden;
 }
+
+/* Restaurant One Page */
+.restaurantBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.photoBoxOne {
+  min-height: 100%;
+  flex-grow: 1;
+  display: flex;
+  padding-top: 30px;
+  /*justify-content: top;
+  flex-direction: column;*/
+}
+
+.address {
+  padding-left: 20px;
+}
+
+.createReviewButton {
+  margin: 10px 10px 30px 10px;
+  width: 45px;
+  border: 2px solid deepskyblue;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.createReviewButton:focus,
+.createReviewButton:hover {
+  border: 2px solid orangered;
+  border-radius: 0px;
+}
+
+.openHours {
+  margin: 5px 0 0 0;
+}
+
+.openHours p {
+  margin-left: 20px;
+}
+
+/* Reviews List */
+.reviewsList {
+  margin: 40px 0 0 0;
+  padding: 0;
+}
+
+.reviewItem {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin: 10px 0 0 0;
+  padding: 0 0 0 10px;
+  list-style-type: none;
+  /*display: flex;*/
+}
+
+.reviewComment {
+  margin-bottom: -20px;
+  /*flex-grow: 4;*/
+}
+
+.reviewAuthor {
+  /*flex-grow: 1;*/
+  /*padding-top: 10px;*/
+  text-align: center;
+}
+
+.authorName {
+  line-height: 0.5;
+  display: inline-block;
+  margin-left: 10px;
+}
