@@ -2,10 +2,14 @@ import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/modules/users';
-import { labeled, inputField, submitButton } from './style.css'
+import { labeled, inputField, submitButton } from './style.css';
 
 const SigninContainer = React.createClass({
-  handleFormSubmit(e) {
+  propTypes: {
+    signinUser: PropTypes.func.isRequired
+  },
+
+  handleFormSubmit (e) {
     e.preventDefault();
 
     this.props.signinUser({
@@ -17,35 +21,35 @@ const SigninContainer = React.createClass({
   render () {
     return (
       <div>
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={ this.handleFormSubmit }>
 
-          <span id="errSignInEmail" className="error"></span>
+          <span id='errSignInEmail' className='error'></span>
           <label className={ labeled }>Email<br />
             <input
-              id="signInEmail"
-              name="signInEmail"
+              id='signInEmail'
+              name='signInEmail'
               className={ inputField }
-              type="text"
-              placeholder="Your Email"
-              ref="email"
-              required
-              autoFocus />
+              type='text'
+              placeholder='Your Email'
+              ref='email'
+              required={ true }
+              autoFocus={ true } />
           </label><br />
-          
-          <span id="errSignInPassword" className="error"></span>
+
+          <span id='errSignInPassword' className='error'></span>
           <label className={ labeled }>Password<br />
             <input
-              id="signInPassword"
-              name="signInPassword"
+              id='signInPassword'
+              name='signInPassword'
               className={ inputField }
-              type="password"
-              placeholder="Secure Password"
-              ref="password"
-              required />
+              type='password'
+              placeholder='Secure Password'
+              ref='password'
+              required={ true } />
           </label>
-          
-          <button 
-            action="submit"
+
+          <button
+            action='submit'
             className={ submitButton }>Sign in!</button>
         </form>
       </div>
@@ -53,7 +57,7 @@ const SigninContainer = React.createClass({
   }
 });
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return { errorMessage: state.users.error };
 }
 

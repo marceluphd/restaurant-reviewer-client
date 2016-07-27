@@ -2,10 +2,14 @@ import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/modules/users';
-import { labeled, inputField, submitButton } from './style.css'
+import { labeled, inputField, submitButton } from './style.css';
 
 const SignupContainer = React.createClass({
-  handleFormSubmit(e) {
+  propTypes: {
+    signupUser: PropTypes.func.isRequired
+  },
+
+  handleFormSubmit (e) {
     e.preventDefault();
 
     this.props.signupUser({
@@ -15,55 +19,55 @@ const SignupContainer = React.createClass({
     });
   },
 
-  render() {
+  render () {
     return (
-      <form onSubmit={this.handleFormSubmit}>
-         <span id="errSignUpUsername" className="error"></span>
+      <form onSubmit={ this.handleFormSubmit }>
+         <span id='errSignUpUsername' className='error'></span>
           <label className={ labeled }>Username<br />
             <input
-              id="signUpUsername"
-              name="signUpUsername"
+              id='signUpUsername'
+              name='signUpUsername'
               className={ inputField }
-              type="text"
-              placeholder="Your Username"
-              ref="username"
-              required
-              autoFocus />
+              type='text'
+              placeholder='Your Username'
+              ref='username'
+              required={ true }
+              autoFocus={ true } />
           </label><br />
 
-         <span id="errSignUpEmail" className="error"></span>
+         <span id='errSignUpEmail' className='error'></span>
           <label className={ labeled }>Email<br />
             <input
-              id="signUpEmail"
-              name="signUpEmail"
+              id='signUpEmail'
+              name='signUpEmail'
               className={ inputField }
-              type="text"
-              placeholder="Your Email"
-              ref="email"
-              required />
+              type='text'
+              placeholder='Your Email'
+              ref='email'
+              required={ true } />
           </label><br />
-          
-          <span id="errSignUpPassword" className="error"></span>
+
+          <span id='errSignUpPassword' className='error'></span>
           <label className={ labeled }>Password<br />
             <input
-              id="signUpPassword"
-              name="signUpPassword"
+              id='signUpPassword'
+              name='signUpPassword'
               className={ inputField }
-              type="password"
-              placeholder="Secure Password"
-              ref="password"
-              required />
+              type='password'
+              placeholder='Secure Password'
+              ref='password'
+              required={ true } />
           </label>
-          
-          <button 
-            action="submit"
+
+          <button
+            action='submit'
             className={ submitButton }>Sign Up!</button>
       </form>
     );
   }
 });
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return { errorMessage: state.users.error };
 }
 

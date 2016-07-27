@@ -25,13 +25,9 @@ const store = createStore(combineReducers(reducers), compose(
   applyMiddleware(thunk),
   window.devToolsExtension ? window.devToolsExtension() : (f) => f
 ));
-
+console.log('ENV', process.env.NODE_ENV);
 // Check if the user is authenticated initially
 const token = localStorage.getItem('token');
-// let config = {};
-// config = {
-//   headers: { 'Authorization': `Bearer ${token}` }
-// }
 
 // Initial load of page or when user refresh the page,
 // if user is already signed in, user has the token.
@@ -48,12 +44,14 @@ if (token) {
     });
 }
 
+const isAuthenticated = checkIfAuthenticated(store, token);
+
 // Check if user is authenticated before letting the user
 // access to certain routes
-function checkAuthentication(nextState, replace) {
-  const isAuthenticated = checkIfAuthenticated(store, token);
+function checkAuthentication (nextState, replace) {
+  // const isAuthenticated = checkIfAuthenticated(store, token);
   const nextPathName = nextState.location.pathname;
-
+  
   if (nextPathName === '/' || nextPathName === '/signin') {
     if (isAuthenticated === true) {
       replace('/create-review');
@@ -66,8 +64,8 @@ function checkAuthentication(nextState, replace) {
 }
 
 render(
-  <Provider store={store}>
-    {getRoutes(checkAuthentication)}
+  <Provider store={ store }>
+    { getRoutes(checkAuthentication) }
   </Provider>,
   document.getElementById('app')
-)
+);

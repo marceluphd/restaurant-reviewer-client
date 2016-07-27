@@ -1,10 +1,9 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-const { object, string, func, bool } = PropTypes;
-import { 
+const { object, bool } = PropTypes;
+import {
   restaurantImage,
-  photoBox,
-  restoBox, 
+  restoBox,
   starRatings,
   createReviewButton,
   openHours,
@@ -19,29 +18,29 @@ import {
 } from './restaurant.css';
 
 RestaurantOne.propTypes = {
-  restaurant: object.isRequired
+  restaurant: object.isRequired,
+  isFetching: bool.isRequired
 };
 
-export default function RestaurantOne(props) {
+export default function RestaurantOne (props) {
   // Render array of restaurant reviews
-  function renderReviews(){
+  function renderReviews () {
     if (props.restaurant.reviews.length > 0) {
-      console.log('[Reviews]: ', props.restaurant.reviews);
       return props.restaurant.reviews.map((r) => {
         return (
-          <li key={r._id} className={ reviewItem }>
+          <li key={ r._id } className={ reviewItem }>
             <div className={ reviewComment }>
-              <p>{r.comment}</p>
+              <p>{ r.comment }</p>
             </div>
             <div className={ reviewAuthor }>
               <div className={ starRatings } title={ r.rating }></div>
-              <p className={ authorName }>{r.author.username}</p>
+              <p className={ authorName }>{ r.author.username }</p>
             </div>
           </li>
         );
       });
     } else {
-      return 'None yet. You wanna write one?';
+      return <p>{ 'None yet. You wanna write one?' }</p>;
     }
   }
 
@@ -50,14 +49,14 @@ export default function RestaurantOne(props) {
     ? <h2 className='header'>{ 'Fetching' }</h2>
     : <div>
         { Object.keys(props.restaurant).length === 0
-          ? <p>{'N/A'}</p>
-          :<div>
-          
+          ? <p>{ 'N/A' }</p>
+          : <div>
+
             <h3>{ props.restaurant.name }</h3>
-            
+
             <div className={ restaurantBox }>
               <div className={ photoBoxOne }>
-                <img src={props.restaurant.photo} alt={`Photo of ${props.restaurant.name}`} className={ restaurantImage }/>
+                <img src={ props.restaurant.photo } alt={ `Photo of ${props.restaurant.name}` } className={ restaurantImage }/>
               </div>
               <div className={ restoBox }>
                 <p><strong>Address:</strong></p>
@@ -74,23 +73,23 @@ export default function RestaurantOne(props) {
                 </div>
 
                 <div className={ starRatings } title={ Math.round(props.restaurant.total_ratings / props.restaurant.reviews.length) }></div>
-                
-                <span> 
-                  {(props.restaurant.total_ratings === 0) 
-                  ? 'N/A' 
-                  : null } ({props.restaurant.reviews.length} reviews)
+
+                <span>
+                  { (props.restaurant.total_ratings === 0)
+                  ? 'N/A'
+                  : null } ({ props.restaurant.reviews.length } reviews)
                 </span>
               </div>
             </div>
 
             <br /><br />
 
-            <Link to={'/restaurants/' + props.restaurant._id + '/create-review'} className={ createReviewButton }>Create Review</Link>
+            <Link to={ '/restaurants/' + props.restaurant._id + '/create-review' } className={ createReviewButton }>Create Review</Link>
             <ul className={ reviewsList } >
               <h3>Reviews</h3>
-              {renderReviews()}
+              { renderReviews() }
             </ul>
 
-          </div>}
+          </div> }
       </div>;
-};
+}

@@ -25,8 +25,8 @@ function fetchingRestaurantOneSuccess (restaurant) {
   };
 }
 
-export function fetchRestaurantOne(id) {
-  return function(dispatch) {
+export function fetchRestaurantOne (id) {
+  return function (dispatch) {
     dispatch(fetchingRestaurantOne());
     axios.get(`${ROOT_URL}/api/restaurants/${id}`)
       .then((res) => {

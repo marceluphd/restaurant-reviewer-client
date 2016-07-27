@@ -5,13 +5,21 @@ import ReviewForm from '../../components/reviewForm/reviewForm';
 import * as actions from '../../redux/modules/reviewForm';
 import * as rActions from '../../redux/modules/restaurantOne';
 
+const { object, bool, string, func } = PropTypes;
+
 const ReviewFormContainer = React.createClass({
   propTypes: {
-    comment: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
-    updateComment: PropTypes.func.isRequired,
-    updateRating: PropTypes.func.isRequired,
-    createReview: PropTypes.func.isRequired
+    comment: string.isRequired,
+    rating: string.isRequired,
+    updateComment: func.isRequired,
+    updateRating: func.isRequired,
+    createReview: func.isRequired,
+    fetchRestaurantOne: func.isRequired,
+    error: string.isRequired,
+    params: object.isRequired,
+    restaurant: object.isRequired,
+    isFetching: bool.isRequired,
+    fetchError: string.isRequired
   },
 
   componentDidMount () {

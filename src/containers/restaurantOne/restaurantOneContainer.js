@@ -4,10 +4,15 @@ import { connect } from 'react-redux';
 import Restaurant from '../../components/restaurant/restaurantOne';
 import * as actions from '../../redux/modules/restaurantOne';
 
+const { object, bool, string, func } = PropTypes;
+
 const RestaurantOneContainer = React.createClass({
   propTypes: {
-    isFetching: PropTypes.bool.isRequired,
-    restaurant: PropTypes.object.isRequired
+    isFetching: bool.isRequired,
+    restaurant: object.isRequired,
+    params: object.isRequired,
+    error: string.isRequired,
+    fetchRestaurantOne: func.isRequired
   },
 
   componentDidMount () {

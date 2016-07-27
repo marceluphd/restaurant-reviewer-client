@@ -25,7 +25,7 @@ export function updateRating (rating) {
   };
 }
 
-function submitted_successfully () {
+function submittedSuccessfully () {
   return {
     type: SUBMITTED_SUCCESSFULLY
   };
@@ -45,8 +45,8 @@ const initialState = {
 };
 
 // reducer
-export default function reviewFormReducer(state = initialState, action) {
-  switch(action.type) {
+export default function reviewFormReducer (state = initialState, action) {
+  switch (action.type) {
 
     case UPDATE_COMMENT:
       return {
@@ -80,20 +80,20 @@ export default function reviewFormReducer(state = initialState, action) {
 }
 
 // Handlers
-export function createReview(restaurantId, comment, rating) {
-  console.log(restaurantId, comment, rating);
-  return function(dispatch) {
+export function createReview (restaurantId, comment, rating) {
+  // console.log(restaurantId, comment, rating);
+  return function (dispatch) {
     axios.post(`${ROOT_URL}/api/reviews/${restaurantId}/create-review`, {comment, rating}, setHeaders())
       .then((res) => {
         // Successfully submitted
-        console.log('[createReview res]', res)
-        dispatch(submitted_successfully());
+        // console.log('[createReview res]', res);
+        dispatch(submittedSuccessfully());
         hashHistory.push(`/restaurants/${restaurantId}`);
       })
       .catch((err) => {
         // Got error on submission
-        console.log('[createReview err]', err);
-        dispatch(submissionError(err.data.error || err.data))
+        // console.log('[createReview err]', err);
+        dispatch(submissionError(err.data.error || err.data));
       });
-  }
+  };
 }

@@ -12,7 +12,7 @@ Accessibility first restaurant reviewer application
 - https://github.com/yhagio/restaurant-reviewer-api
 
 
-#### To run locally
+#### To run this app (development version) locally
 ```
 git clone git@github.com:yhagio/restaurant-reviewer-client.git
 cd restaurant-reviewer-client
@@ -20,9 +20,18 @@ npm install && npm run start
 ```
 Then go to `http://localhost:8080/` in your browser.
 
+#### To run production version (Minified version)
+```
+npm run prod 
+npm run prod:run
+```
+Then go to `http://127.0.0.1:8080`
+
 Backend API is hosted on Heroku :)
 
 #### To run Back-end locally
+Uncomment DEV and comment out PRODUCTION from `src/config/constants.js` <br />
+Then clone the backend as follows (Assume you have MongoDB & Node.js & NPM installed)
 ```
 git clone git@github.com:yhagio/restaurant-reviewer-api.git
 cd restaurant-reviewer-api
@@ -44,5 +53,3 @@ npm run start
 ### Tools
 - [ImageOptim](https://imageoptim.com/mac)
 - [Webpack](http://webpack.github.io/docs/)
-- [PostCSS](http://postcss.org/)
-- [PostCSS-Loader](https://github.com/postcss/postcss-loader)

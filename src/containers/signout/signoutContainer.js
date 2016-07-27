@@ -7,7 +7,7 @@ const SignoutContainer = React.createClass({
   PropTypes: {
     dispatch: PropTypes.func.isRequired
   },
-
+  
   componentDidMount () {
     this.props.dispatch(signoutUser());
   },

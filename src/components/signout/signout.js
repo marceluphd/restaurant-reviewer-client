@@ -1,9 +1,9 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
-export default function Signout() {
+export default function Signout () {
   return (
     <div>
-      <h3>Signed out ...</h3>
+      <h3>{ 'Signed out ...' }</h3>
     </div>
   );
-};
+}

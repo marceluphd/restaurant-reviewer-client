@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { ROOT_URL } from '../../config/constants';
-import { setHeaders } from '../../helpers/utils';
 
 const FETCHING_RESTAURANTS = 'FETCHING_RESTAURANTS';
 const FETCHING_RESTAURANTS_ERROR = 'FETCHING_RESTAURANTS_ERROR';
@@ -39,12 +38,11 @@ export function filterRestaurantsByCategory (searchCategory) {
   return {
     type: FILTER_RESTAURANTS_CATEGORY,
     searchCategory
-  }
+  };
 }
 
-
-export function fetchRestaurants() {
-  return function(dispatch) {
+export function fetchRestaurants () {
+  return function (dispatch) {
     dispatch(fetchingRestaurants());
     axios.get(`${ROOT_URL}/api/restaurants`)
       .then((res) => {
@@ -56,7 +54,7 @@ export function fetchRestaurants() {
   };
 }
 
-function getFilteredRestaurants(restaurants, searchText, searchCategory) { 
+function getFilteredRestaurants (restaurants, searchText, searchCategory) {
   if (searchText) {
     return restaurants.filter((r) => {
       return (r.name.toLowerCase().indexOf(searchText.toLowerCase()) >= 0);
@@ -66,7 +64,7 @@ function getFilteredRestaurants(restaurants, searchText, searchCategory) {
   if (searchCategory && searchCategory !== 'default') {
     return restaurants.filter((r) => {
       return (r.category.toLowerCase().indexOf(searchCategory.toLowerCase()) >= 0);
-    }); 
+    });
   }
 
   return restaurants;
@@ -105,22 +103,22 @@ export default function restaurants (state = initialState, action) {
         restaurants: action.restaurants,
         filteredRes: action.restaurants
       };
-    
+
     case SEARCH_RESTAURANTS :
       return {
         ...state,
         searchText: action.searchText,
         searchCategory: 'default',
         filteredRes: getFilteredRestaurants(state.restaurants, action.searchText, null)
-      }
-    
+      };
+
     case FILTER_RESTAURANTS_CATEGORY :
       return {
         ...state,
         searchCategory: action.searchCategory,
         searchText: '',
         filteredRes: getFilteredRestaurants(state.restaurants, null, action.searchCategory)
-      }
+      };
 
     default :
       return state;

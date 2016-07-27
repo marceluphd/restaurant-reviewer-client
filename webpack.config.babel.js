@@ -1,6 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/src/index.html',
@@ -25,6 +26,12 @@ const productionPlugin = new webpack.DefinePlugin({
   }
 });
 
+const copyWebpackPlugin = new CopyWebpackPlugin([
+  { from: 'src/images', to: 'images' }
+], {
+  copyUnmodified: true
+});
+
 const base = {
   entry: [
     PATHS.app
@@ -47,12 +54,12 @@ const base = {
 
 const developmentConfig = {
   devtool: 'cheap-module-inline-source-map',
-  plugins: [HtmlWebpackPluginConfig]
+  plugins: [HtmlWebpackPluginConfig, copyWebpackPlugin]
 };
 
 const productionConfig = {
   devtool: 'cheap-module-source-map',
-  plugins: [HtmlWebpackPluginConfig, productionPlugin]
+  plugins: [HtmlWebpackPluginConfig, productionPlugin, copyWebpackPlugin]
 };
 
 export default Object.assign({}, base,

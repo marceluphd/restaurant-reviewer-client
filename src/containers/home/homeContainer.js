@@ -4,13 +4,18 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/modules/restaurants';
 import Restaurant from '../../components/restaurant/restaurant';
 
+const { array, bool, string, func } = PropTypes;
+
 const HomeContainer = React.createClass({
   propTypes: {
-    filteredRes: PropTypes.array.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    searchText: PropTypes.string.isRequired,
-    searchRestaurants: PropTypes.func.isRequired,
-    filterRestaurantsByCategory: PropTypes.func.isRequired
+    filteredRes: array.isRequired,
+    isFetching: bool.isRequired,
+    searchText: string.isRequired,
+    searchRestaurants: func.isRequired,
+    filterRestaurantsByCategory: func.isRequired,
+    fetchRestaurants: func.isRequired,
+    error: string.isRequired,
+    searchCategory: string.isRequired
   },
 
   componentDidMount () {
@@ -33,17 +38,17 @@ const HomeContainer = React.createClass({
   }
 });
 
-function mapStateToProps({restaurants}) {
+function mapStateToProps ({restaurants}) {
   return {
     filteredRes: restaurants.filteredRes,
     isFetching: restaurants.isFetching,
     error: restaurants.error,
     searchText: restaurants.searchText,
     searchCategory: restaurants.searchCategory
-  }
+  };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return bindActionCreators(actions, dispatch);
 }
 

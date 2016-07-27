@@ -17,17 +17,17 @@ const MainContainer = React.createClass({
           { this.props.children }
         </main>
         <footer>
-          <p className="createdBy">
+          <p className='createdBy'>
             Built with
-            <img 
+            <img
               className={ heartIcon }
-              src="/images/iconmonstr-favorite-4-icon-24.png"
-              alt="Heart Icon"/>
+              src='/images/iconmonstr-favorite-4-icon-24.png'
+              alt='Heart Icon'/>
             by
-            <a 
-              href="https://github.com/yhagio"
+            <a
+              href='https://github.com/yhagio'
               className={ nameLink }
-              target="_blank">Yuichi Hagio</a>
+              target='_blank'>Yuichi Hagio</a>
           </p>
         </footer>
       </div>

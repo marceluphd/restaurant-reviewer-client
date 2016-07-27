@@ -9,7 +9,7 @@ const ReviewsContainer = React.createClass({
           <li>
             <h4>El Rey Del Taco</h4>
             <p>Open housrs:</p>
-            <div className="open-hours">
+            <div className='open-hours'>
               <p>Mon: 11:00 - 22:00</p>
               <p>Tue: 11:00 - 22:00</p>
               <p>Wed: 11:00 - 22:00</p>
@@ -22,9 +22,9 @@ const ReviewsContainer = React.createClass({
             <p>Reviews: Average 4.5 (123 reviews)</p>
             <ul>
               <li>
-                <div className="">
-                  <img src="" alt="Profile Picture" />
-                  <a href="#">Yuichi Hagio</a>
+                <div className=''>
+                  <img src='' alt='Profile Picture' />
+                  <a href='#'>Yuichi Hagio</a>
                 </div>
                 <p>Rating: 5</p>
                 <p>Date: 06/30/2016</p>
