@@ -65,11 +65,11 @@ export default function Restaurant(props) {
               <h4>{ res.name }</h4>
               <p>{ res.category }</p>
               <p>{ res.address }</p>
-              <div className={ starRatings } title=".1000"></div>
+              <div className={ starRatings } title={ Math.round(res.total_ratings / res.reviews.length) }></div>
               <span>
                 {(res.total_ratings === 0) 
                 ? 'N/A'
-                : Math.round(res.total_ratings / res.reviews.length)} ({res.reviews.length} reviews)
+                : null } ({res.reviews.length} reviews)
               </span>
             
             </div>

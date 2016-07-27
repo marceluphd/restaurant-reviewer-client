@@ -34,7 +34,7 @@ export default function RestaurantOne(props) {
               <p>{r.comment}</p>
             </div>
             <div className={ reviewAuthor }>
-              <div className={ starRatings } title=".1000"></div>
+              <div className={ starRatings } title={ r.rating }></div>
               <p className={ authorName }>{r.author.username}</p>
             </div>
           </li>
@@ -73,12 +73,12 @@ export default function RestaurantOne(props) {
                   <p>Sun: { props.restaurant.hours.sun_start }:00 - { props.restaurant.hours.sun_end }:00</p>
                 </div>
 
-                <div className={ starRatings } title=".1000"></div>
+                <div className={ starRatings } title={ Math.round(props.restaurant.total_ratings / props.restaurant.reviews.length) }></div>
                 
                 <span> 
                   {(props.restaurant.total_ratings === 0) 
                   ? 'N/A' 
-                  : Math.round(props.restaurant.total_ratings / props.restaurant.reviews.length)} ({props.restaurant.reviews.length} reviews)
+                  : null } ({props.restaurant.reviews.length} reviews)
                 </span>
               </div>
             </div>

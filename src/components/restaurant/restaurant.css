@@ -79,7 +79,9 @@ select {
   font-size: 0.8em;
 }
 
-/* 5 Star Rating Readonly */
+/** 
+  5 Star Rating Readonly 
+**/
 .starRatings {
   unicode-bidi: bidi-override;
   color: #c5c5c5;
@@ -96,30 +98,26 @@ select {
   opacity: .7;
 }
 
-[title=".000"]::after {
+[title="NaN"]::after,
+[title="0"]::after {
   width: 0%;
 }
-[title=".125"]::after {
-  width: 12.5%;
+[title="1"]::after {
+  width: 20%;
 }
-[title=".250"]::after {
-  width: 25%;
+[title="2"]::after {
+  width: 40%;
 }
-[title=".375"]::after {
-  width: 37.5%;
+[title="3"]::after {
+  width: 60%;
 }
-[title=".500"]::after {
-  width: 50%;
+[title="4"]::after {
+  width: 80%;
 }
-[title=".625"]::after {
-  width: 62.5%;
+[title="5"]::after {
+  width: 100%;
 }
-[title=".750"]::after {
-  width: 75%;
-}
-[title=".875"]::after {
-  width: 87.5%;
-}
+
 .starRatings::after {
   color: orange;
   content: '★★★★★';
