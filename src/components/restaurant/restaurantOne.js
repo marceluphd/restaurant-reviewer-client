@@ -26,6 +26,7 @@ export default function RestaurantOne(props) {
   // Render array of restaurant reviews
   function renderReviews(){
     if (props.restaurant.reviews.length > 0) {
+      console.log('[Reviews]: ', props.restaurant.reviews);
       return props.restaurant.reviews.map((r) => {
         return (
           <li key={r._id} className={ reviewItem }>

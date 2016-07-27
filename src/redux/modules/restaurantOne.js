@@ -38,6 +38,19 @@ export function fetchRestaurantOne(id) {
   };
 }
 
+// export function fetchRestaurantOneBasic(id) {
+//   return function(dispatch) {
+//     dispatch(fetchingRestaurantOne());
+//     axios.get(`${ROOT_URL}/api/restaurants/${id}/create-review`)
+//       .then((res) => {
+//         dispatch(fetchingRestaurantOneSuccess(res.data));
+//       })
+//       .catch((err) => {
+//         dispatch(fetchingRestaurantOneError(err));
+//       });
+//   };
+// }
+
 const initialState = {
   restaurant: {},
   error: '',

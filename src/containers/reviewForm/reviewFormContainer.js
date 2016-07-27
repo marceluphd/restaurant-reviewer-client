@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ReviewForm from '../../components/reviewForm/reviewForm';
 import * as actions from '../../redux/modules/reviewForm';
+import * as rActions from '../../redux/modules/restaurantOne';
 
 const ReviewFormContainer = React.createClass({
   propTypes: {
@@ -13,9 +14,16 @@ const ReviewFormContainer = React.createClass({
     createReview: PropTypes.func.isRequired
   },
 
+  componentDidMount () {
+    this.props.fetchRestaurantOne(this.props.params.id);
+  },
+
   render () {
     return (
       <ReviewForm
+        restaurant= { this.props.restaurant }
+        isFetching= { this.props.isFetching }
+        fetchError= { this.props.fetchError }
         createReview= { this.props.createReview }
         restaurantId={ this.props.params.id }
         comment={ this.props.comment }
@@ -27,8 +35,11 @@ const ReviewFormContainer = React.createClass({
   }
 });
 
-function mapStateToProps ({reviewForm}) {
+function mapStateToProps ({restaurantOne, reviewForm}) {
   return {
+    restaurant: restaurantOne.restaurant,
+    isFetching: restaurantOne.isFetching,
+    fetchError: restaurantOne.error,
     comment: reviewForm.comment,
     rating: reviewForm.rating,
     error: reviewForm.error
@@ -36,7 +47,7 @@ function mapStateToProps ({reviewForm}) {
 }
 
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators(actions, dispatch);
+  return bindActionCreators({...actions, ...rActions}, dispatch);
 }
 
 export default connect(

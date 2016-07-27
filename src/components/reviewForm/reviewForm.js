@@ -22,7 +22,8 @@ export default function ReviewForm(props) {
 
   return (
     <form onSubmit={handleFormSubmit}>
-
+      <h2>{ props.restaurant.name }</h2>
+      <hr />
       <span id="errReviewForm" className="error"></span>
       <label className={ labeled }>Review Comment<br />
         <input

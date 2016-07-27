@@ -86,13 +86,13 @@ export function createReview(restaurantId, comment, rating) {
     axios.post(`${ROOT_URL}/api/reviews/${restaurantId}/create-review`, {comment, rating}, setHeaders())
       .then((res) => {
         // Successfully submitted
-        // console.log('[createReview res]', res)
+        console.log('[createReview res]', res)
         dispatch(submitted_successfully());
         hashHistory.push(`/restaurants/${restaurantId}`);
       })
       .catch((err) => {
         // Got error on submission
-        // console.log('[createReview err]', err);
+        console.log('[createReview err]', err);
         dispatch(submissionError(err.data.error || err.data))
       });
   }
