@@ -28,7 +28,12 @@ export default function ReviewForm (props) {
 
   return (
     <form onSubmit={ handleFormSubmit }>
-      <h2><Link to={`restaurants/${props.restaurant._id}`} className={ titleLink }>{ props.restaurant.name }</Link></h2>
+      <h2>
+        <Link
+          to={`restaurants/${props.restaurant._id}`}
+          className={ titleLink }
+          role="link">{ props.restaurant.name }</Link>
+      </h2>
       <hr />
       <span id='errReviewForm' className='error'></span>
       <label className={ labeled }>Review Comment<br />
@@ -98,7 +103,8 @@ export default function ReviewForm (props) {
 
       <button
         action='submit'
-        className={ submitButton }>Submit</button>
+        className={ submitButton }
+        role="button">Submit</button>
     </form>
   );
 }

@@ -1,10 +1,16 @@
 /* Search */
+.searchLabel {
+  font-size: 1.2em;
+  padding-left: 5px;
+}
+
 .searchInput {
   height: 35px;
+  margin-top: 4px;
   border: none;
   border-bottom: 1px solid deeppink;
   padding: 5px;
-  width: 140px;
+  width: 100%; /* 140px; */
   font-size: 1.1em;
   background: url('../../images/iconmonstr-magnifier-1-24.png') no-repeat right 5px center;
 }
@@ -15,16 +21,14 @@
 }
 
 @media only screen and (min-width: 400px) {
-  .searchInput {
-    width: 60%;
-  }
+
 }
 
 /* Category filter */
 select {
   border: 1px solid deeppink;
   height: 45px;
-  margin: 0 0 20px 5px;
+  margin: 20px 0 20px 5px;
   padding-left: 10px;
 }
 
@@ -76,7 +80,12 @@ select {
 }
 
 .restoBox span {
-  font-size: 0.8em;
+  font-size: 0.9em;
+  margin-left: 3px;
+}
+
+.reviewCount {
+  display: block;
 }
 
 /** 
@@ -99,22 +108,22 @@ select {
 }
 
 [title="NaN"]::after,
-[title="0"]::after {
+[title="0 stars"]::after {
   width: 0%;
 }
-[title="1"]::after {
+[title="1 stars"]::after {
   width: 20%;
 }
-[title="2"]::after {
+[title="2 stars"]::after {
   width: 40%;
 }
-[title="3"]::after {
+[title="3 stars"]::after {
   width: 60%;
 }
-[title="4"]::after {
+[title="4 stars"]::after {
   width: 80%;
 }
-[title="5"]::after {
+[title="5 stars"]::after {
   width: 100%;
 }
 
@@ -190,7 +199,12 @@ select {
 
 .reviewComment {
   margin-bottom: -20px;
+  padding-right: 2px;
   /*flex-grow: 4;*/
+}
+
+.commentBody {
+  word-wrap: break-word;
 }
 
 .reviewAuthor {
@@ -203,4 +217,9 @@ select {
   line-height: 0.5;
   display: inline-block;
   margin-left: 10px;
+}
+
+.date {
+  margin-left: 5px;
+  font-size: 0.9em;
 }

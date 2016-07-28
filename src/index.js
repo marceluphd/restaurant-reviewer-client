@@ -25,7 +25,7 @@ const store = createStore(combineReducers(reducers), compose(
   applyMiddleware(thunk),
   window.devToolsExtension ? window.devToolsExtension() : (f) => f
 ));
-console.log('ENV', process.env.NODE_ENV);
+
 // Check if the user is authenticated initially
 const token = localStorage.getItem('token');
 
@@ -50,14 +50,16 @@ const isAuthenticated = checkIfAuthenticated(store, token);
 // access to certain routes
 function checkAuthentication (nextState, replace) {
   // const isAuthenticated = checkIfAuthenticated(store, token);
+  // console.log('ISAUTHED?', store.getState().users.isAuthenticated);
+  // console.log('TOOKEEEN', localStorage.getItem('token'));
   const nextPathName = nextState.location.pathname;
   
   if (nextPathName === '/' || nextPathName === '/signin') {
-    if (isAuthenticated === true) {
+    if (store.getState().users.isAuthenticated === true && localStorage.getItem('token')) {
       replace('/create-review');
     }
   } else {
-    if (isAuthenticated !== true) {
+    if (store.getState().users.isAuthenticated !== true || !localStorage.getItem('token')) {
       replace('/signin');
     }
   }

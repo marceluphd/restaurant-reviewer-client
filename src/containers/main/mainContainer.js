@@ -13,9 +13,11 @@ const MainContainer = React.createClass({
     return (
       <div className={ wrapper }>
         <Navigation isAuthenticated={ this.props.isAuthenticated }/>
+        
         <main>
           { this.props.children }
         </main>
+
         <footer>
           <p className='createdBy'>
             Built with
@@ -27,7 +29,8 @@ const MainContainer = React.createClass({
             <a
               href='https://github.com/yhagio'
               className={ nameLink }
-              target='_blank'>Yuichi Hagio</a>
+              target='_blank'
+              role="link">Yuichi Hagio</a>
           </p>
         </footer>
       </div>

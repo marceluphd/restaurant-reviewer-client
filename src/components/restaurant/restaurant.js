@@ -2,12 +2,14 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 const { func, array } = PropTypes;
 import {
+  searchLabel,
   searchInput,
   restaurantCard,
   restaurantImage,
   photoBox,
   restoBox,
-  starRatings
+  starRatings,
+  reviewCount
 } from './restaurant.css';
 
 Restaurant.propTypes = {
@@ -23,23 +25,28 @@ export default function Restaurant (props) {
           ? <p>{ 'No restaurants found.' }</p>
           : null }
         <h2>Restaurants List</h2>
-        <label>
-          <input
-            type='text'
-            name='search'
-            placeholder='Restaurant...'
-            className={ searchInput }
-            value={ props.searchText }
-            onChange={ (e) => props.searchRestaurants(e.target.value) }
-            autoFocus={ true } />
-        </label>
 
-        { }
+        <label htmlFor="searchInput" className={ searchLabel }>Search<br />
+        <input
+          id="searchInput"
+          name="searchInput"
+          type='text'
+          name='search'
+          placeholder='Restaurant...'
+          className={ searchInput }
+          value={ props.searchText }
+          onChange={ (e) => props.searchRestaurants(e.target.value) }
+          autoFocus={ true } />
+        </label><br />
+
+        <label htmlFor="filterSelection" className={ searchLabel }>Category Filter</label>
         <select
+          id="filterSelection"
+          name="filterSelection"
           value={ props.searchCategory }
           onChange={ (e) => props.filterRestaurantsByCategory(e.target.value) } >
 
-          <option value='default'>Category ▼</option>
+          <option value='default'>Select ▼</option>
           <option value='French'>French</option>
           <option value='Japanese'>Japanese</option>
           <option value='Mexican'>Mexican</option>
@@ -47,24 +54,35 @@ export default function Restaurant (props) {
 
         </select>
 
-        { }
         { props.restaurants.map((res) => (
-          <Link to={ `restaurants/${res._id}` } key={ res._id } className={ restaurantCard }>
+          <Link
+            to={ `restaurants/${res._id}` }
+            key={ res._id }
+            className={ restaurantCard }
+            role="link">
+
             <div className={ photoBox }>
-              <img src={ res.photo } alt={ `Photo of ${res.name}` } className={ restaurantImage }/>
+              <img
+                src={ res.photo }
+                alt={ `Photo of ${res.name}` }
+                className={ restaurantImage }/>
             </div>
+
             <div className={ restoBox }>
               <h4>{ res.name }</h4>
               <p>{ res.category }</p>
               <p>{ res.address }</p>
-              <div className={ starRatings } title={ Math.round(res.total_ratings / res.reviews.length) }></div>
+              <div
+                className={ starRatings }
+                title={ `${Math.round(res.total_ratings / res.reviews.length)} stars` }></div>
               <span>
                 { (res.total_ratings === 0)
                 ? 'N/A'
-                : null } ({ res.reviews.length } reviews)
+                : null } <span className={ reviewCount }>({ res.reviews.length } reviews)</span>
               </span>
 
             </div>
+
           </Link>
         )) }
       </div>;

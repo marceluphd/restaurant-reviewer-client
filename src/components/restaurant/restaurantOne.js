@@ -13,9 +13,12 @@ import {
   reviewsList,
   reviewItem,
   reviewComment,
+  commentBody,
   reviewAuthor,
-  authorName
+  authorName,
+  date
 } from './restaurant.css';
+import { getFormattedDate } from '../../helpers/utils';
 
 RestaurantOne.propTypes = {
   restaurant: object.isRequired,
@@ -27,14 +30,17 @@ export default function RestaurantOne (props) {
   function renderReviews () {
     if (props.restaurant.reviews.length > 0) {
       return props.restaurant.reviews.map((r) => {
+        // console.log('r.created', r.created); debugger;
         return (
           <li key={ r._id } className={ reviewItem }>
             <div className={ reviewComment }>
-              <p>{ r.comment }</p>
+              <p className={ commentBody }>{ r.comment }</p>
             </div>
             <div className={ reviewAuthor }>
-              <div className={ starRatings } title={ r.rating }></div>
-              <p className={ authorName }>{ r.author.username }</p>
+              <div className={ starRatings } title={ `${r.rating} stars` }></div>
+              <p className={ authorName }>{ r.author.username }
+                <em className={ date }>{ getFormattedDate(r.created) }</em>
+              </p>
             </div>
           </li>
         );
@@ -56,7 +62,10 @@ export default function RestaurantOne (props) {
 
             <div className={ restaurantBox }>
               <div className={ photoBoxOne }>
-                <img src={ props.restaurant.photo } alt={ `Photo of ${props.restaurant.name}` } className={ restaurantImage }/>
+                <img
+                  src={ props.restaurant.photo }
+                  alt={ `Photo of ${props.restaurant.name}` }
+                  className={ restaurantImage }/>
               </div>
               <div className={ restoBox }>
                 <p><strong>Address:</strong></p>
@@ -72,7 +81,9 @@ export default function RestaurantOne (props) {
                   <p>Sun: { props.restaurant.hours.sun_start }:00 - { props.restaurant.hours.sun_end }:00</p>
                 </div>
 
-                <div className={ starRatings } title={ Math.round(props.restaurant.total_ratings / props.restaurant.reviews.length) }></div>
+                <div
+                  className={ starRatings }
+                  title={ `${Math.round(props.restaurant.total_ratings / props.restaurant.reviews.length)} stars` }></div>
 
                 <span>
                   { (props.restaurant.total_ratings === 0)
@@ -84,7 +95,11 @@ export default function RestaurantOne (props) {
 
             <br /><br />
 
-            <Link to={ '/restaurants/' + props.restaurant._id + '/create-review' } className={ createReviewButton }>Create Review</Link>
+            <Link
+              to={ '/restaurants/' + props.restaurant._id + '/create-review' }
+              className={ createReviewButton }
+              role="link">Create Review</Link>
+
             <ul className={ reviewsList } >
               <h3>Reviews</h3>
               { renderReviews() }

@@ -61,7 +61,8 @@ const SignupContainer = React.createClass({
 
           <button
             action='submit'
-            className={ submitButton }>Sign Up!</button>
+            className={ submitButton }
+            role="button">Sign Up!</button>
       </form>
     );
   }

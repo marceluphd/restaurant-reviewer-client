@@ -13,11 +13,11 @@ Links.propTypes = {
 function Links ({ isAuthenticated }) {
   return isAuthenticated === true
     ? <div className={ floatRight }>
-        <Link to='/signout' className={ navLink }>Sign out</Link>
+        <Link to='/signout' className={ navLink } role="link">Sign out</Link>
       </div>
     : <div className={ floatRight }>
-        <Link to='/signup' className={ navLink }>Sign up</Link>
-        <Link to='/signin' className={ navLink }>Sign in</Link>
+        <Link to='/signup' className={ navLink } role="link">Sign up</Link>
+        <Link to='/signin' className={ navLink } role="link">Sign in</Link>
       </div>;
 }
 
@@ -25,8 +25,11 @@ export default function Navigation ({ isAuthenticated }) {
   return (
     <header>
       <nav>
-        <a href='#' className={ homeButton } >
-          <img src='../../images/iconmonstr-home-6-64.png' className={ homeIcon }/> Res Rev
+        <a href='#' className={ homeButton } role="link">
+          <img 
+            src='../../images/iconmonstr-home-6-64.png'
+            alt="Back to Home Icon"
+            className={ homeIcon }/> Res Rev
         </a>
         <Links isAuthenticated={ isAuthenticated } />
       </nav>

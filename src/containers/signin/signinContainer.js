@@ -50,7 +50,8 @@ const SigninContainer = React.createClass({
 
           <button
             action='submit'
-            className={ submitButton }>Sign in!</button>
+            className={ submitButton }
+            role="button">Sign in!</button>
         </form>
       </div>
     );

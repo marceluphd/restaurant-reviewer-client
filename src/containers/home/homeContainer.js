@@ -24,7 +24,7 @@ const HomeContainer = React.createClass({
 
   render () {
     return (
-      <main>
+      
         <Restaurant
           restaurants={ this.props.filteredRes }
           isFetching={ this.props.isFetching }
@@ -33,7 +33,7 @@ const HomeContainer = React.createClass({
           searchRestaurants={ this.props.searchRestaurants }
           filterRestaurantsByCategory={ this.props.filterRestaurantsByCategory }
           searchCategory={ this.props.searchCategory } />
-      </main>
+      
     );
   }
 });
