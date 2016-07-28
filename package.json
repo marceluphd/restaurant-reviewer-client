@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "prod": "webpack -p",
+    "production": "webpack -p",
     "lint": "eslint src/.; exit 0",
     "fix": "eslint --fix src/.; exit 0",
-    "prod:run": "cd dist && http-server"
+    "production:run": "cd dist && http-server"
   },
   "author": "Yuichi Hagio <yhagio87@gmail.com> (http://github.com/yhagio)",
   "license": "MIT",

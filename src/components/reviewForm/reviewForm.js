@@ -50,6 +50,7 @@ export default function ReviewForm (props) {
       <fieldset className={ starabilityBasic }>
         <legend>Rate this restaurant:</legend>
         <input
+          tabindex="-1"
           type='radio'
           id='first-rate5'
           name='rating'
@@ -60,6 +61,7 @@ export default function ReviewForm (props) {
           title='Amazing'>5 stars</label>
 
         <input
+          tabindex="-1"
           type='radio'
           id='first-rate4'
           name='rating'
@@ -70,6 +72,7 @@ export default function ReviewForm (props) {
           title='Very good'>4 stars</label>
 
         <input
+          tabindex="-1"
           type='radio'
           id='first-rate3'
           name='rating'
@@ -80,6 +83,7 @@ export default function ReviewForm (props) {
           title='Average'>3 stars</label>
 
         <input
+          tabindex="-1"
           type='radio'
           id='first-rate2'
           name='rating'
@@ -90,6 +94,7 @@ export default function ReviewForm (props) {
           title='Not good'>2 stars</label>
 
         <input
+          tabindex="-1"
           type='radio'
           id='first-rate1'
           name='rating'

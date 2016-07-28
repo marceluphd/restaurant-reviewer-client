@@ -59,10 +59,16 @@ Additionally:
 - Production
 - Focus style can be provided to visually present which page elements has the current focus.
 
-### Done Fix
+### Done Fix (7/27)
 - Aria roles to every links and buttons i.e. `rolw="button"`
 - Removed duplicated <main> tags
 - Filter input label
 - Star rating is now screen-reader-friendly, for example, 4 stars instead of 4
 - Add review date
+
+### Done fix (7/28)
+- ARIA role for link element to "button" in `components/restaurant/restaurant.js`
+- `webpack -p` warnings [here](https://github.com/webpack/webpack/issues/2352). Uglify warns about Babel output; nothing we can do here.
+- So, added plugin to disable warnings from UglifyJS.
+- added `tabindex="-1"` on star ratings for reviewForm
 

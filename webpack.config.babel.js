@@ -3,6 +3,13 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
+// Stop displaying annoying Warnings from UglifyJS for stripping down unreachable codes
+const stopUglifyJSWarnings = new webpack.optimize.UglifyJsPlugin({
+  compress: {
+    warnings: false
+  }
+});
+
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/src/index.html',
   filename: 'index.html',
@@ -59,7 +66,7 @@ const developmentConfig = {
 
 const productionConfig = {
   devtool: 'cheap-module-source-map',
-  plugins: [HtmlWebpackPluginConfig, productionPlugin, copyWebpackPlugin]
+  plugins: [HtmlWebpackPluginConfig, productionPlugin, copyWebpackPlugin, stopUglifyJSWarnings]
 };
 
 export default Object.assign({}, base,

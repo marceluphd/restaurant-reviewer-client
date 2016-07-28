@@ -59,7 +59,7 @@ export default function Restaurant (props) {
             to={ `restaurants/${res._id}` }
             key={ res._id }
             className={ restaurantCard }
-            role="link">
+            role="button">
 
             <div className={ photoBox }>
               <img
