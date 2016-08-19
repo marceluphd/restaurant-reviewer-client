@@ -8,6 +8,8 @@ Accessibility first restaurant reviewer application
 - 5 Star rating system (HTML, CSS only)
 - Simple search and filter for finding restaurants
 
+![Screenshot](/scr.png)
+
 #### Backend Repo
 - https://github.com/yhagio/restaurant-reviewer-api
 
