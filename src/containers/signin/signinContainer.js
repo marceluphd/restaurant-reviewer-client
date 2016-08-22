@@ -1,69 +1,61 @@
 import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as actions from '../../redux/modules/users';
-import { labeled, inputField, submitButton } from './style.css';
+import * as usersActions from 'redux/modules/users';
+import * as signinFormActions from 'redux/modules/signinForm';
+import { Signin } from 'components';
+
+const { func, string } = PropTypes;
 
 const SigninContainer = React.createClass({
   propTypes: {
-    signinUser: PropTypes.func.isRequired
-  },
+    signinUser: func.isRequired,
+    errorMessage: string.isRequired,
 
-  handleFormSubmit (e) {
-    e.preventDefault();
+    email: string.isRequired,
+    password: string.isRequired,
+    emailError: string.isRequired,
+    passwordError: string.isRequired,
 
-    this.props.signinUser({
-      email: this.refs.email.value,
-      password: this.refs.password.value
-    });
+    updateSigninEmail: func.isRequired,
+    updateSigninPassword: func.isRequired,
+    warnSigninEmailError: func.isRequired,
+    warnSigninPasswordError: func.isRequired
   },
 
   render () {
     return (
-      <div>
-        <form onSubmit={ this.handleFormSubmit }>
+      <Signin 
+        signinUser={ this.props.signinUser }
+        errorMessage={ this.props.errorMessage }
+        email={ this.props.email }
+        password={ this.props.password }
+        emailError={ this.props.emailError }
+        passwordError={ this.props.passwordError }
 
-          <span id='errSignInEmail' className='error'></span>
-          <label className={ labeled }>Email<br />
-            <input
-              id='signInEmail'
-              name='signInEmail'
-              className={ inputField }
-              type='text'
-              placeholder='Your Email'
-              ref='email'
-              required={ true }
-              autoFocus={ true } />
-          </label><br />
-
-          <span id='errSignInPassword' className='error'></span>
-          <label className={ labeled }>Password<br />
-            <input
-              id='signInPassword'
-              name='signInPassword'
-              className={ inputField }
-              type='password'
-              placeholder='Secure Password'
-              ref='password'
-              required={ true } />
-          </label>
-
-          <button
-            action='submit'
-            className={ submitButton }
-            role="button">Sign in!</button>
-        </form>
-      </div>
+        updateEmail={ this.props.updateSigninEmail }
+        updatePassword={ this.props.updateSigninPassword }
+        warnEmailError={ this.props.warnSigninEmailError }
+        warnPasswordError={ this.props.warnSigninPasswordError } />
     );
   }
 });
 
-function mapStateToProps (state) {
-  return { errorMessage: state.users.error };
+function mapStateToProps ({ users, signinForm }) {
+  return {
+    errorMessage: users.error,
+    email: signinForm.email,
+    password: signinForm.password,
+    emailError: signinForm.emailError,
+    passwordError: signinForm.passwordError
+  };
 }
 
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators(actions, dispatch);
+  return bindActionCreators({
+    ...usersActions,
+    ...signinFormActions
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SigninContainer);

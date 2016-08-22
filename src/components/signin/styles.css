@@ -3,13 +3,16 @@ form {
 }
 
 .labeled {
+  display: block;
+  /*color: #00e3ff;*/
   font-size: 1.2em;
+  margin: 15px 0 2px 0;
 }
 
 .inputField {
   width: 100%;
   height: 45px;
-  margin: 5px 0 20px;
+  margin: 5px 0 0;
   border: 2px solid dodgerblue;
   padding: 5px;
   box-sizing : border-box; /* Prevent input field goes over form width */
@@ -22,10 +25,21 @@ form {
 }
 
 .submitButton {
-  width: 100px;
+  width: 130px;
   height: 50px;
   border: 2px solid limegreen;
-  margin: 10px 0 10px 0;
+  margin: 15px 0 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  background: transparent;
+  font-size: 1.2em;
+}
+
+.noSubmit {
+  width: 130px;
+  height: 50px;
+  border: 2px solid red;
+  margin: 15px 0 10px 0;
   padding: 10px;
   border-radius: 10px;
   background: transparent;
@@ -34,4 +48,9 @@ form {
 
 .submitButton:active {
   border: 3px solid orangered;
+}
+
+.error {
+  color: red;
+  margin: 0 0 15px 0;
 }
