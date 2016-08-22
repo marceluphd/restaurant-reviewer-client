@@ -16,7 +16,8 @@ import {
   commentBody,
   reviewAuthor,
   authorName,
-  date
+  date,
+  dotdotdot
 } from './restaurant.css';
 import { getFormattedDate } from '../../helpers/utils';
 
@@ -52,7 +53,7 @@ export default function RestaurantOne (props) {
 
   // Render restaurant information + reviews
   return props.isFetching === true
-    ? <h2 className='header'>{ 'Fetching' }</h2>
+    ? <h2 className={ dotdotdot }>{ 'Fetching' }</h2>
     : <div>
         { Object.keys(props.restaurant).length === 0
           ? <p>{ 'N/A' }</p>

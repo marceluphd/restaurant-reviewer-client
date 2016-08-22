@@ -9,7 +9,8 @@ import {
   photoBox,
   restoBox,
   starRatings,
-  reviewCount
+  reviewCount,
+  dotdotdot
 } from './restaurant.css';
 
 Restaurant.propTypes = {
@@ -19,7 +20,7 @@ Restaurant.propTypes = {
 
 export default function Restaurant (props) {
   return props.isFetching === true
-    ? <h2 className='header'>{ 'Fetching' }</h2>
+    ? <h2 className={ dotdotdot }>{ 'Fetching' }</h2>
     : <div>
         { props.restaurants.length === 0
           ? <p>{ 'No restaurants found.' }</p>

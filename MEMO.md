@@ -32,13 +32,13 @@ When viewing a specific restaurant, current reviews are displayed along with a f
 - [PostCSS](http://postcss.org/)
 - [PostCSS-Loader](https://github.com/postcss/postcss-loader)
 
-- [ ] ARIA Accessibility
-- [ ] Keyboards only friendly
-- [ ] Screen Reader friendly
+- [X] ARIA Accessibility
+- [X] Keyboards only friendly
+- [X] Screen Reader friendly
 - [X] Color blind users friendly
 
-- [ ] Signin form validations
-- [ ] Signup form validations
+- [X] Signin form validations
+- [X] Signup form validations
 - [ ] reviewForm form validations
 - [X] Minimize Assets, CSS, HTML, Javascript (Production)
 - [X] Image Optimized (ImageOptim)
@@ -46,7 +46,7 @@ When viewing a specific restaurant, current reviews are displayed along with a f
 Additionally:
 
 - [ ] Prevent creating multiple reviews for the same restaurant
-- [ ] Updatable Reviews
+- [ ] Updatable or deletable reviews
 - [ ] Load More for Restaurants, Reviews
 - [ ] Component testing Enzyme
 - [ ] Redux testing
