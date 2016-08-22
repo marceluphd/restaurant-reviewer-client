@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Map } from 'immutable';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Restaurant from '../../components/restaurant/restaurantOne';
@@ -29,11 +30,11 @@ const RestaurantOneContainer = React.createClass({
   }
 });
 
-function mapStateToProps (state) {
+function mapStateToProps ({ restaurantOne }) {
   return {
-    restaurant: state.restaurantOne.restaurant,
-    isFetching: state.restaurantOne.isFetching,
-    error: state.restaurantOne.error
+    restaurant: restaurantOne.get('restaurant'),
+    isFetching: restaurantOne.get('isFetching'),
+    error: restaurantOne.get('error')
   };
 }
 

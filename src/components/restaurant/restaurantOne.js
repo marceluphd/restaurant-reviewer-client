@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
+import { Map } from 'immutable';
 import { Link } from 'react-router';
-const { object, bool } = PropTypes;
 import {
   restaurantImage,
   restoBox,
@@ -22,25 +22,25 @@ import {
 import { getFormattedDate } from '../../helpers/utils';
 
 RestaurantOne.propTypes = {
-  restaurant: object.isRequired,
-  isFetching: bool.isRequired
+  restaurant: PropTypes.object.isRequired,
+  isFetching: PropTypes.bool.isRequired
 };
 
 export default function RestaurantOne (props) {
+  
   // Render array of restaurant reviews
   function renderReviews () {
-    if (props.restaurant.reviews.length > 0) {
-      return props.restaurant.reviews.map((r) => {
-        // console.log('r.created', r.created); debugger;
+    if (props.restaurant.get('reviews').size > 0) {
+      return props.restaurant.get('reviews').map((r) => {
         return (
-          <li key={ r._id } className={ reviewItem }>
+          <li key={ r.get('_id') } className={ reviewItem }>
             <div className={ reviewComment }>
-              <p className={ commentBody }>{ r.comment }</p>
+              <p className={ commentBody }>{ r.get('comment') }</p>
             </div>
             <div className={ reviewAuthor }>
-              <div className={ starRatings } title={ `${r.rating} stars` }></div>
-              <p className={ authorName }>{ r.author.username }
-                <em className={ date }>{ getFormattedDate(r.created) }</em>
+              <div className={ starRatings } title={ `${r.get('rating')} stars` }></div>
+              <p className={ authorName }>{ r.get('author.username') }
+                <em className={ date }>{ getFormattedDate(r.get('created')) }</em>
               </p>
             </div>
           </li>
@@ -55,57 +55,63 @@ export default function RestaurantOne (props) {
   return props.isFetching === true
     ? <h2 className={ dotdotdot }>{ 'Fetching' }</h2>
     : <div>
-        { Object.keys(props.restaurant).length === 0
+        { props.restaurant.size !== 9
           ? <p>{ 'N/A' }</p>
           : <div>
 
-            <h3>{ props.restaurant.name }</h3>
+            <h3>{ props.restaurant.get('name') }</h3>
 
             <div className={ restaurantBox }>
               <div className={ photoBoxOne }>
                 <img
-                  src={ props.restaurant.photo }
-                  alt={ `Photo of ${props.restaurant.name}` }
+                  src={ props.restaurant.get('photo') }
+                  alt={ `Photo of ${props.restaurant.get('name')}` }
                   className={ restaurantImage }/>
               </div>
               <div className={ restoBox }>
                 <p><strong>Address:</strong></p>
-                <p className={ address } >{ props.restaurant.address }</p>
+                <p className={ address } >{ props.restaurant.get('address') }</p>
                 <p><strong>Open housrs:</strong></p>
+                
+
                 <div className={ openHours }>
-                  <p>Mon: { props.restaurant.hours.mon_start }:00 - { props.restaurant.hours.mon_end }:00</p>
-                  <p>Tue: { props.restaurant.hours.tue_start }:00 - { props.restaurant.hours.tue_end }:00</p>
-                  <p>Wed: { props.restaurant.hours.wed_start }:00 - { props.restaurant.hours.wed_end }:00</p>
-                  <p>Thu: { props.restaurant.hours.thu_start }:00 - { props.restaurant.hours.thu_end }:00</p>
-                  <p>Fri: { props.restaurant.hours.fri_start }:00 - { props.restaurant.hours.fri_end }:00</p>
-                  <p>Sat: { props.restaurant.hours.sat_start }:00 - { props.restaurant.hours.sat_end }:00</p>
-                  <p>Sun: { props.restaurant.hours.sun_start }:00 - { props.restaurant.hours.sun_end }:00</p>
+                  <p>Mon: { props.restaurant.get('hours').get('mon_start') }:00 - { props.restaurant.get('hours').get('mon_end') }:00</p>
+                  <p>Tue: { props.restaurant.get('hours').get('tue_start') }:00 - { props.restaurant.get('hours').get('tue_end') }:00</p>
+                  <p>Wed: { props.restaurant.get('hours').get('wed_start') }:00 - { props.restaurant.get('hours').get('wed_end') }:00</p>
+                  <p>Thu: { props.restaurant.get('hours').get('thu_start') }:00 - { props.restaurant.get('hours').get('thu_end') }:00</p>
+                  <p>Fri: { props.restaurant.get('hours').get('fri_start') }:00 - { props.restaurant.get('hours').get('fri_end') }:00</p>
+                  <p>Sat: { props.restaurant.get('hours').get('sat_start') }:00 - { props.restaurant.get('hours').get('sat_end') }:00</p>
+                  <p>Sun: { props.restaurant.get('hours').get('sun_start') }:00 - { props.restaurant.get('hours').get('sun_end') }:00</p>
                 </div>
 
+                
                 <div
                   className={ starRatings }
-                  title={ `${Math.round(props.restaurant.total_ratings / props.restaurant.reviews.length)} stars` }></div>
-
+                  title={ `${Math.round(props.restaurant.get('total_ratings') / props.restaurant.get('reviews').size)} stars` }></div>
+                
                 <span>
-                  { (props.restaurant.total_ratings === 0)
+                  { (props.restaurant.get('total_ratings') === 0)
                   ? 'N/A'
-                  : null } ({ props.restaurant.reviews.length } reviews)
+                  : null } ({ props.restaurant.get('reviews').size } reviews)
                 </span>
+                
+                
               </div>
             </div>
 
             <br /><br />
 
             <Link
-              to={ '/restaurants/' + props.restaurant._id + '/create-review' }
+              to={ '/restaurants/' + props.restaurant.get('_id') + '/create-review' }
               className={ createReviewButton }
               role="link">Create Review</Link>
-
+            
+            
             <ul className={ reviewsList } >
               <h3>Reviews</h3>
               { renderReviews() }
             </ul>
-
+            
           </div> }
       </div>;
 }
