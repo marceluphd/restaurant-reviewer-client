@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Map, fromJS } from 'immutable';
+import { Map } from 'immutable';
 import { ROOT_URL } from '../../config/constants';
 
 const FETCHING_RESTAURANT_ONE = 'FETCHING_RESTAURANT_ONE';
@@ -39,19 +39,6 @@ export function fetchRestaurantOne (id) {
       });
   };
 }
-
-// export function fetchRestaurantOneBasic(id) {
-//   return function(dispatch) {
-//     dispatch(fetchingRestaurantOne());
-//     axios.get(`${ROOT_URL}/api/restaurants/${id}/create-review`)
-//       .then((res) => {
-//         dispatch(fetchingRestaurantOneSuccess(res.data));
-//       })
-//       .catch((err) => {
-//         dispatch(fetchingRestaurantOneError(err));
-//       });
-//   };
-// }
 
 const initialState = Map({
   restaurant: {},

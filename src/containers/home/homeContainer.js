@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { List } from 'immutable';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/modules/restaurants';
@@ -8,7 +9,7 @@ const { array, bool, string, func } = PropTypes;
 
 const HomeContainer = React.createClass({
   propTypes: {
-    filteredRes: array.isRequired,
+    filteredRes: PropTypes.instanceOf(List),
     isFetching: bool.isRequired,
     searchText: string.isRequired,
     searchRestaurants: func.isRequired,
@@ -40,11 +41,11 @@ const HomeContainer = React.createClass({
 
 function mapStateToProps ({restaurants}) {
   return {
-    filteredRes: restaurants.filteredRes,
-    isFetching: restaurants.isFetching,
-    error: restaurants.error,
-    searchText: restaurants.searchText,
-    searchCategory: restaurants.searchCategory
+    filteredRes: restaurants.get('filteredRes'),
+    isFetching: restaurants.get('isFetching'),
+    error: restaurants.get('error'),
+    searchText: restaurants.get('searchText'),
+    searchCategory: restaurants.get('searchCategory')
   };
 }
 

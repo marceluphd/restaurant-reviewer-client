@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { fromJS } from 'immutable';
 import { ROOT_URL } from '../../config/constants';
 
 const FETCHING_RESTAURANTS = 'FETCHING_RESTAURANTS';
@@ -70,55 +71,50 @@ function getFilteredRestaurants (restaurants, searchText, searchCategory) {
   return restaurants;
 }
 
-const initialState = {
+const initialState = fromJS({
   restaurants: [],
   error: '',
   isFetching: false,
   searchText: '',
   searchCategory: 'default',
   filteredRes: []
-};
+});
 
 export default function restaurants (state = initialState, action) {
   switch (action.type) {
 
     case FETCHING_RESTAURANTS :
-      return {
-        ...state,
+      return state.merge({
         isFetching: true
-      };
+      });
 
     case FETCHING_RESTAURANTS_ERROR :
-      return {
-        ...state,
+      return state.merge({
         isFetching: false,
         error: action.error
-      };
+      });
 
     case FETCHING_RESTAURANTS_SUCCESS :
-      return {
-        ...state,
+      return state.merge({
         isFetching: false,
         error: '',
         restaurants: action.restaurants,
         filteredRes: action.restaurants
-      };
+      });
 
     case SEARCH_RESTAURANTS :
-      return {
-        ...state,
+      return state.merge({
         searchText: action.searchText,
         searchCategory: 'default',
         filteredRes: getFilteredRestaurants(state.restaurants, action.searchText, null)
-      };
+      });
 
     case FILTER_RESTAURANTS_CATEGORY :
-      return {
-        ...state,
+      return state.merge({
         searchCategory: action.searchCategory,
         searchText: '',
         filteredRes: getFilteredRestaurants(state.restaurants, null, action.searchCategory)
-      };
+      });
 
     default :
       return state;

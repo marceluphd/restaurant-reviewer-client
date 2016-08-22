@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { Map } from 'immutable';
 import { Link } from 'react-router';
 import {
   restaurantImage,

@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { Map } from 'immutable';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Restaurant from '../../components/restaurant/restaurantOne';

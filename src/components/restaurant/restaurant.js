@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { List } from 'immutable';
 import { Link } from 'react-router';
 const { func, array } = PropTypes;
 import {
@@ -14,7 +15,7 @@ import {
 } from './restaurant.css';
 
 Restaurant.propTypes = {
-  restaurants: array.isRequired,
+  restaurants: PropTypes.instanceOf(List),
   filterRestaurantsByCategory: func.isRequired
 };
 
@@ -57,29 +58,29 @@ export default function Restaurant (props) {
 
         { props.restaurants.map((res) => (
           <Link
-            to={ `restaurants/${res._id}` }
-            key={ res._id }
+            to={ `restaurants/${res.get('_id')}` }
+            key={ res.get('_id') }
             className={ restaurantCard }
             role="button">
 
             <div className={ photoBox }>
               <img
-                src={ res.photo }
-                alt={ `Photo of ${res.name}` }
+                src={ res.get('photo') }
+                alt={ `Photo of ${res.get('name')}` }
                 className={ restaurantImage }/>
             </div>
 
             <div className={ restoBox }>
-              <h4>{ res.name }</h4>
-              <p>{ res.category }</p>
-              <p>{ res.address }</p>
+              <h4>{ res.get('name') }</h4>
+              <p>{ res.get('category') }</p>
+              <p>{ res.get('address') }</p>
               <div
                 className={ starRatings }
-                title={ `${Math.round(res.total_ratings / res.reviews.length)} stars` }></div>
+                title={ `${Math.round(res.get('total_ratings') / res.get('reviews').size)} stars` }></div>
               <span>
-                { (res.total_ratings === 0)
+                { (res.get('total_ratings') === 0)
                 ? 'N/A'
-                : null } <span className={ reviewCount }>({ res.reviews.length } reviews)</span>
+                : null } <span className={ reviewCount }>({ res.get('reviews').size } reviews)</span>
               </span>
 
             </div>
