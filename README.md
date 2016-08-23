@@ -4,7 +4,7 @@ Accessibility first restaurant reviewer application
 ### [DEMO](https://res-rev.firebaseapp.com)
 
 **Unique Features**
-- Built with React, Redux, React-Router
+- Built with React, Redux, React-Router, Immutable.js
 - User authentication with JWT
 - User can access via keyboards only or screen reader (ARIA)
 - 5 Star rating system (HTML, CSS only)
