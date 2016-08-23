@@ -1,15 +1,16 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-
+import { Map } from 'immutable';
 import {
   titleLink,
   starabilityBasic,
   labeled,
   inputField,
-  submitButton
+  submitButton,
+  dotdotdot
 } from './style.css';
 
-const { string, func } = PropTypes;
+const { string, func, bool } = PropTypes;
 
 ReviewForm.propTypes = {
   updateComment: func.isRequired,
@@ -17,7 +18,8 @@ ReviewForm.propTypes = {
   createReview: func.isRequired,
   restaurantId: string.isRequired,
   comment: string.isRequired,
-  rating: string.isRequired
+  rating: string.isRequired,
+  isFetching: bool.isRequired
 };
 
 export default function ReviewForm (props) {
@@ -26,13 +28,15 @@ export default function ReviewForm (props) {
     props.createReview(props.restaurantId, props.comment, props.rating);
   }
 
-  return (
+  return Object.keys(props.restaurant).length === 0 || props.isFetching === true
+  ? <h3 className={ dotdotdot }>Fetching</h3>
+  : (
     <form onSubmit={ handleFormSubmit }>
       <h2>
         <Link
-          to={`restaurants/${props.restaurant._id}`}
+          to={ `restaurants/${props.restaurant.get('_id')}` }
           className={ titleLink }
-          role="link">{ props.restaurant.name }</Link>
+          role="link">{ props.restaurant.get('name') }</Link>
       </h2>
       <hr />
       <span id='errReviewForm' className='error'></span>
@@ -50,7 +54,7 @@ export default function ReviewForm (props) {
       <fieldset className={ starabilityBasic }>
         <legend>Rate this restaurant:</legend>
         <input
-          tabindex="-1"
+          tabIndex="-1"
           type='radio'
           id='first-rate5'
           name='rating'
@@ -61,7 +65,7 @@ export default function ReviewForm (props) {
           title='Amazing'>5 stars</label>
 
         <input
-          tabindex="-1"
+          tabIndex="-1"
           type='radio'
           id='first-rate4'
           name='rating'
@@ -72,7 +76,7 @@ export default function ReviewForm (props) {
           title='Very good'>4 stars</label>
 
         <input
-          tabindex="-1"
+          tabIndex="-1"
           type='radio'
           id='first-rate3'
           name='rating'
@@ -83,7 +87,7 @@ export default function ReviewForm (props) {
           title='Average'>3 stars</label>
 
         <input
-          tabindex="-1"
+          tabIndex="-1"
           type='radio'
           id='first-rate2'
           name='rating'
@@ -94,7 +98,7 @@ export default function ReviewForm (props) {
           title='Not good'>2 stars</label>
 
         <input
-          tabindex="-1"
+          tabIndex="-1"
           type='radio'
           id='first-rate1'
           name='rating'

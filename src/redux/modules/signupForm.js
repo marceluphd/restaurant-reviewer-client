@@ -1,3 +1,5 @@
+import { Map } from 'immutable';
+
 const UPDATE_USERNAME = 'UPDATE_USERNAME';
 const UPDATE_EMAIL = 'UPDATE_EMAIL';
 const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
@@ -50,7 +52,7 @@ export function warnPasswordError() {
   };
 }
 
-const initialState = {
+const initialState = Map({
   username: '',
   email: '',
   password: '',
@@ -58,51 +60,45 @@ const initialState = {
   usernameError: '',
   emailError: '',
   passwordError: '',
-};
+});
 
 // reducer
 export default function eventFormReducer (state = initialState, action) {
   switch (action.type) {
 
     case UPDATE_USERNAME:
-      return {
-        ...state,
+      return state.merge({
         username: action.username,
         usernameError: ''
-      };
+      });
 
     case UPDATE_EMAIL:
-      return {
-        ...state,
+      return state.merge({
         email: action.email,
         emailError: ''
-      };
+      });
 
     case UPDATE_PASSWORD:
-      return {
-        ...state,
+      return state.merge({
         password: action.password,
         passwordError: ''
-      };
+      });
       
     // Form Errors
     case USERNAME_ERROR:
-      return {
-        ...state,
+      return state.merge({
         usernameError: action.usernameError,
-      };
+      });
 
     case EMAIL_ERROR:
-      return {
-        ...state,
+      return state.merge({
         emailError: action.emailError,
-      };
+      });
 
     case PASSWORD_ERROR:
-      return {
-        ...state,
+      return state.merge({
         passwordError: action.passwordError,
-      };
+      });
 
     default:
       return state;

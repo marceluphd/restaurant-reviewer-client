@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import ReviewForm from '../../components/reviewForm/reviewForm';
-import * as actions from '../../redux/modules/reviewForm';
-import * as rActions from '../../redux/modules/restaurantOne';
+import { ReviewForm } from 'components';
+import * as actions from 'redux/modules/reviewForm';
+import * as rActions from 'redux/modules/restaurantOne';
 
 const { object, bool, string, func } = PropTypes;
 
@@ -45,12 +45,12 @@ const ReviewFormContainer = React.createClass({
 
 function mapStateToProps ({restaurantOne, reviewForm}) {
   return {
-    restaurant: restaurantOne.restaurant,
-    isFetching: restaurantOne.isFetching,
-    fetchError: restaurantOne.error,
-    comment: reviewForm.comment,
-    rating: reviewForm.rating,
-    error: reviewForm.error
+    restaurant: restaurantOne.get('restaurant'),
+    isFetching: restaurantOne.get('isFetching'),
+    fetchError: restaurantOne.get('error'),
+    comment: reviewForm.get('comment'),
+    rating: reviewForm.get('rating'),
+    error: reviewForm.get('error')
   };
 }
 

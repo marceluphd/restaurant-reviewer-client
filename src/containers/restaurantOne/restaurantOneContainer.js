@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Restaurant from '../../components/restaurant/restaurantOne';
-import * as actions from '../../redux/modules/restaurantOne';
+import { RestaurantOne } from 'components';
+import * as actions from 'redux/modules/restaurantOne';
 
 const { object, bool, string, func } = PropTypes;
 
@@ -21,7 +21,7 @@ const RestaurantOneContainer = React.createClass({
 
   render () {
     return (
-      <Restaurant
+      <RestaurantOne
         restaurant={ this.props.restaurant }
         isFetching={ this.props.isFetching }
         error={ this.props.error }/>

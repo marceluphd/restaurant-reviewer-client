@@ -1,3 +1,5 @@
+import { Map } from 'immutable';
+
 const UPDATE_SIGNIN_EMAIL = 'UPDATE_SIGNIN_EMAIL';
 const UPDATE_SIGNIN_PASSWORD = 'UPDATE_SIGNIN_PASSWORD';
 const SIGNIN_EMAIL_ERROR = 'SIGNIN_EMAIL_ERROR';
@@ -33,43 +35,39 @@ export function warnSigninPasswordError() {
   };
 }
 
-const initialState = {
+const initialState = Map({
   email: '',
   password: '',
   emailError: '',
   passwordError: '',
-};
+});
 
 // reducer
 export default function eventFormReducer (state = initialState, action) {
   switch (action.type) {
 
     case UPDATE_SIGNIN_EMAIL:
-      return {
-        ...state,
+      return state.merge({
         email: action.email,
         emailError: ''
-      };
+      });
 
     case UPDATE_SIGNIN_PASSWORD:
-      return {
-        ...state,
+      return state.merge({
         password: action.password,
         passwordError: ''
-      };
+      });
       
     // Form Errors
     case SIGNIN_EMAIL_ERROR:
-      return {
-        ...state,
+      return state.merge({
         emailError: action.emailError,
-      };
+      });
 
     case SIGNIN_PASSWORD_ERROR:
-      return {
-        ...state,
+      return state.merge({
         passwordError: action.passwordError,
-      };
+      });
 
     default:
       return state;

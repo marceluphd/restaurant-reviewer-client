@@ -43,11 +43,11 @@ const SigninContainer = React.createClass({
 
 function mapStateToProps ({ users, signinForm }) {
   return {
-    errorMessage: users.error,
-    email: signinForm.email,
-    password: signinForm.password,
-    emailError: signinForm.emailError,
-    passwordError: signinForm.passwordError
+    errorMessage: users.get('error'),
+    email: signinForm.get('email'),
+    password: signinForm.get('password'),
+    emailError: signinForm.get('emailError'),
+    passwordError: signinForm.get('passwordError')
   };
 }
 

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import Navigation from '../../components/navigation/navigation';
+import { Navigation } from 'components';
 import { wrapper, heartIcon, nameLink } from './style.css';
 
 const MainContainer = React.createClass({
@@ -39,5 +39,5 @@ const MainContainer = React.createClass({
 });
 
 export default connect(
-  ({ users }) => ({ isAuthenticated: users.isAuthenticated })
+  ({ users }) => ({ isAuthenticated: users.get('isAuthenticated') })
 )(MainContainer);

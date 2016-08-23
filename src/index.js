@@ -50,16 +50,16 @@ const isAuthenticated = checkIfAuthenticated(store, token);
 // access to certain routes
 function checkAuthentication (nextState, replace) {
   // const isAuthenticated = checkIfAuthenticated(store, token);
-  // console.log('ISAUTHED?', store.getState().users.isAuthenticated);
+  // console.log('ISAUTHED?', store.getState().users.get('isAuthenticated')');
   // console.log('TOOKEEEN', localStorage.getItem('token'));
   const nextPathName = nextState.location.pathname;
   
   if (nextPathName === '/' || nextPathName === '/signin') {
-    if (store.getState().users.isAuthenticated === true && localStorage.getItem('token')) {
+    if (store.getState().users.get('isAuthenticated') === true && localStorage.getItem('token')) {
       replace('/create-review');
     }
   } else {
-    if (store.getState().users.isAuthenticated !== true || !localStorage.getItem('token')) {
+    if (store.getState().users.get('isAuthenticated') !== true || !localStorage.getItem('token')) {
       replace('/signin');
     }
   }

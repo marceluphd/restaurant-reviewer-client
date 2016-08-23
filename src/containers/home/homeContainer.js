@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react';
 import { List } from 'immutable';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as actions from '../../redux/modules/restaurants';
-import Restaurant from '../../components/restaurant/restaurant';
+import * as actions from 'redux/modules/restaurants';
+import { Restaurant } from 'components';
 
 const { array, bool, string, func } = PropTypes;
 
@@ -25,16 +25,14 @@ const HomeContainer = React.createClass({
 
   render () {
     return (
-      
-        <Restaurant
-          restaurants={ this.props.filteredRes }
-          isFetching={ this.props.isFetching }
-          error={ this.props.error }
-          searchText = { this.props.searchText }
-          searchRestaurants={ this.props.searchRestaurants }
-          filterRestaurantsByCategory={ this.props.filterRestaurantsByCategory }
-          searchCategory={ this.props.searchCategory } />
-      
+      <Restaurant
+        restaurants={ this.props.filteredRes }
+        isFetching={ this.props.isFetching }
+        error={ this.props.error }
+        searchText = { this.props.searchText }
+        searchRestaurants={ this.props.searchRestaurants }
+        filterRestaurantsByCategory={ this.props.filterRestaurantsByCategory }
+        searchCategory={ this.props.searchCategory } />
     );
   }
 });

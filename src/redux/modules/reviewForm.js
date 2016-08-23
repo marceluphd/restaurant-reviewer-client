@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Map } from 'immutable';
 import { hashHistory } from 'react-router';
 import { ROOT_URL } from '../../config/constants';
 import { setHeaders } from '../../helpers/utils';
@@ -38,41 +39,37 @@ function submissionError (error) {
   };
 }
 
-const initialState = {
+const initialState = Map({
   comment: '',
   rating: '',
   error: ''
-};
+});
 
 // reducer
 export default function reviewFormReducer (state = initialState, action) {
   switch (action.type) {
 
     case UPDATE_COMMENT:
-      return {
-        ...state,
+      return state.merge({
         comment: action.comment
-      };
+      });
 
     case UPDATE_RATING:
-      return {
-        ...state,
+      return state.merge({
         rating: action.rating
-      };
+      });
 
     case SUBMITTED_SUCCESSFULLY:
-      return {
-        ...state,
+      return state.merge({
         comment: '',
         rating: '',
         restaurantId: ''
-      };
+      });
 
     case SUBMISSION_ERROR:
-      return {
-        ...state,
+      return state.merge({
         error: action.error
-      };
+      });
 
     default:
       return state;

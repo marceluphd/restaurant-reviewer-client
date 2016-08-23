@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { hashHistory } from 'react-router';
-
-// export const ROOT_URL = 'http://localhost:3000';
+import { Map } from 'immutable';
 import { ROOT_URL } from '../../config/constants';
 
 const AUTH_USER = 'AUTH_USER';
@@ -51,63 +50,56 @@ function unauthUser () {
   };
 }
 
-const initialState = {
+const initialState = Map({
   isFetching: false,
   error: '',
   isAuthenticated: false,
   authedUser: {}
-};
+});
 
 // Users reducer
 export default function usersReducer (state = initialState, action) {
   switch (action.type) {
 
     case AUTH_USER :
-      return {
-        ...state,
+      return state.merge({
         isAuthenticated: true,
         authedUser: action.user
-      };
+      });
 
     case UNAUTH_USER :
-      return {
-        ...state,
+      return state.merge({
         isAuthenticated: false,
         authedUser: {}
-      };
+      });
 
     case AUTH_ERROR :
-      return {
-        ...state,
+      return state.merge({
         error: action.error
-      };
+      });
 
     case FETCHING_USER:
-      return {
-        ...state,
+      return state.merge({
         isFetching: true
-      };
+      });
 
     case FETCHING_USER_FAILURE:
-      return {
-        ...state,
+      return state.merge({
         isFetching: false,
         error: action.error
-      };
+      });
 
     case FETCHING_USER_SUCCESS:
       return action.user === null
-        ? {
-          ...state,
+        ? state.merge({
           isFetching: false,
           error: ''
-        }
-        : {
-          ...state,
+        })
+        : state.merge({
           isFetching: false,
           error: '',
           authedUser: action.user
-        };
+        });
 
     default:
       return state;
