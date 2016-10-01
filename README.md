@@ -26,8 +26,8 @@ Then go to `http://localhost:8080/` in your browser.
 
 #### To run production version (Minified version)
 ```
-npm run prod 
-npm run prod:run
+npm run production
+npm run production:run
 ```
 Then go to `http://127.0.0.1:8080`
 
@@ -45,6 +45,11 @@ mongod
 Then open another tab in terminal
 ```
 npm run start
+```
+
+#### Testing
+```
+npm run test
 ```
 
 ### Resources

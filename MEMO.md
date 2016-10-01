@@ -39,11 +39,12 @@ When viewing a specific restaurant, current reviews are displayed along with a f
 
 - [X] Signin form validations
 - [X] Signup form validations
-- [ ] reviewForm form validations
 - [X] Minimize Assets, CSS, HTML, Javascript (Production)
 - [X] Image Optimized (ImageOptim)
 - [X] ESLint
 - [X] CSS refactor
+- [ ] reviewForm form validations
+- [ ] editable review
 - [ ] Unit testing
 - [ ] Browsers (Chrome, Firefox, Safari, Opera)
 
