@@ -10,9 +10,9 @@ import {
   photoBox,
   restoBox,
   starRatings,
-  reviewCount,
-  dotdotdot
+  reviewCount
 } from './restaurant.css';
+import { dotdotdot } from '../../styles/ellipsis-animation.css';
 
 Restaurant.propTypes = {
   restaurants: PropTypes.instanceOf(List),

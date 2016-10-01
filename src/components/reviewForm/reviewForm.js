@@ -1,14 +1,10 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Map } from 'immutable';
-import {
-  titleLink,
-  starabilityBasic,
-  labeled,
-  inputField,
-  submitButton,
-  dotdotdot
-} from './style.css';
+import { titleLink, labeled, inputField } from './style.css';
+import { starabilityBasic } from './star-rating.css';
+import { dotdotdot } from '../../styles/ellipsis-animation.css';
+import { authForm, submitButton } from '../../styles/styles.css';
 
 const { string, func, bool } = PropTypes;
 
@@ -31,7 +27,7 @@ export default function ReviewForm (props) {
   return Object.keys(props.restaurant).length === 0 || props.isFetching === true
   ? <h3 className={ dotdotdot }>Fetching</h3>
   : (
-    <form onSubmit={ handleFormSubmit }>
+    <form onSubmit={ handleFormSubmit } className={ authForm }>
       <h2>
         <Link
           to={ `restaurants/${props.restaurant.get('_id')}` }

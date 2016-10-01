@@ -1,59 +1,7 @@
-/* Star Rating */
-.starabilityBasic {
-  display: block;
-  position: relative;
-  width: 150px;
-  min-height: 60px;
-  padding: 0;
-  border: none;
-}
-
-.starabilityBasic > input {
-  position: absolute;
-  margin-right: -100%;
-  opacity: 0;
-}
-
-.starabilityBasic > input:checked ~ label,
-.starabilityBasic > input:focus ~ label {
-  background-position: 0 -30px;
-}
-
-.starabilityBasic > input:hover ~ label {
-  background-position: 0 -30px;
-}
-
-.starabilityBasic > input:focus + label {
-  outline: 1px dotted #999;
-}
-
-.starabilityBasic > label {
-  position: relative;
-  display: inline-block;
-  float: right;
-  width: 30px;
-  height: 30px;
-  color: transparent;
-  cursor: pointer;
-  background-image: url("../../images/icons.png");
-  background-repeat: no-repeat;
-}
-
-@media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 192dpi) {
-  .starabilityBasic > label {
-    background-image: url("../../images/icons@2x.png");
-    background-size: 30px auto;
-  }
-}
-
-
-/* Form Part */
-form {
-  padding-top: 20px; 
-}
-
+/************************
+  Review Form
+*************************/
 .titleLink {
-  /*color: mediumblue;*/
   color: #333;
   text-decoration: underline;
 }
@@ -64,7 +12,6 @@ form {
 
 .inputField {
   width: 100%;
-  /*height: 45px;*/
   margin: 5px 0 20px;
   border: 1px solid #555;
   border-bottom: 1px solid #333;
@@ -75,42 +22,4 @@ form {
 .inputField:focus,
 .inputField:hover {
   border: 1px solid dodgerblue;
-}
-
-.submitButton {
-  border: none;
-  width: 100px;
-  height: 45px;
-  margin: 10px 0 10px 0;
-  /*padding: 10px;*/
-  background-color: limegreen;
-  color: #fff;
-  font-size: 1.2em;
-}
-
-.submitButton:hover {
-  cursor: pointer;
-}
-
-/* Ellipsis when isFetching is true */
-.dotdotdot:after {
-  overflow: hidden;
-  display: inline-block;
-  vertical-align: bottom;
-  -webkit-animation: ellipsis steps(4,end) 500ms infinite;      
-  animation: ellipsis steps(4,end) 500ms infinite;
-  content: "\2026"; /* ascii code for the ellipsis character */
-  width: 0px;
-}
-
-@keyframes ellipsis {
-  to {
-    width: 1.25em;    
-  }
-}
-
-@-webkit-keyframes ellipsis {
-  to {
-    width: 1.25em;    
-  }
 }

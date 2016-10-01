@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import { homeIcon, homeButton, floatRight, navLink } from './style.css';
+import { header, homeIcon, homeButton, floatRight, navLink } from './style.css';
 
 Navigation.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired
@@ -23,7 +23,7 @@ function Links ({ isAuthenticated }) {
 
 export default function Navigation ({ isAuthenticated }) {
   return (
-    <header>
+    <header className={ header }>
       <nav>
         <a href='#' className={ homeButton } role="link">
           <img 

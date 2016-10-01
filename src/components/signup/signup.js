@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
 import {
+  authForm,
   labeled,
   inputField,
   noSubmit,
   submitButton,
   error
-} from './styles.css';
+} from '../../styles/styles.css';
 
 
 const { func, string } = PropTypes;
@@ -61,7 +62,7 @@ export default function Signup (props) {
     });
   }
   return (
-    <form onSubmit={ handleFormSubmit }>
+    <form onSubmit={ handleFormSubmit } className={ authForm }>
         <label className={ labeled }>Username<br />
           <input
             id='signUpUsername'

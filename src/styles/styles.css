@@ -10,7 +10,64 @@
   font-size: 1.1em;
 }
 
-/* HOVER */
-.hoverButton {
-  box-shadow: 0 0 5px #555;
+
+/************************
+  Signup / Signin Form 
+*************************/
+.authForm {
+  padding-top: 20px; 
+}
+
+.labeled {
+  display: block;
+  font-size: 1.2em;
+  margin: 15px 0 3px 0;
+  color: #999;
+}
+
+.inputField {
+  width: 100%;
+  height: 45px;
+  margin: 5px 0 10px 0;
+  border: none;
+  border-left: 1px solid dodgerblue;  
+  border-bottom: 1px solid dodgerblue;
+  padding: 5px;
+  box-sizing : border-box; /* Prevent input field goes over form width */
+}
+
+.inputField:focus,
+.inputField:hover {
+  box-shadow: 0 0 10px orangered;
+}
+
+.submitButton {
+  width: 130px;
+  height: 50px;
+  border: none;
+  margin: 15px 0 10px 0;
+  padding: 10px;
+  background-color: limegreen;
+  font-size: 1.2em;
+   color: #fff;
+}
+
+.noSubmit {
+  width: 130px;
+  height: 50px;
+  border: none;
+  margin: 15px 0 10px 0;
+  padding: 10px;
+  background-color: orangered;
+  font-size: 1.2em;
+  color: #fff;
+}
+
+.submitButton:active {
+  border: 3px solid orangered;
+}
+
+.error {
+  color: red;
+  margin: 0 0 15px 0;
 }

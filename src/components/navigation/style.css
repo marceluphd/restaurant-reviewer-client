@@ -1,4 +1,4 @@
-header {
+.header {
   max-width: 500px;
   margin: auto;
   margin-bottom: 30px;
@@ -31,10 +31,10 @@ header {
 .homeButton:hover,
 .navLink:focus,
 .navLink:hover {
-  box-shadow: 0 0 5px #555;
+  box-shadow: 3px 3px 7px #555;
 }
 
 .homeButton:active,
 .navLink:active {
-  box-shadow: 0 0 5px mediumseagreen;
+  box-shadow: 3px 3px 7px mediumseagreen;
 }

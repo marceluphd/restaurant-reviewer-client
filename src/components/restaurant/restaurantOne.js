@@ -15,9 +15,9 @@ import {
   commentBody,
   reviewAuthor,
   authorName,
-  date,
-  dotdotdot
+  date
 } from './restaurant.css';
+import { dotdotdot } from '../../styles/ellipsis-animation.css';
 import { getFormattedDate } from '../../helpers/utils';
 
 RestaurantOne.propTypes = {
@@ -37,7 +37,7 @@ export default function RestaurantOne (props) {
             </div>
             <div className={ reviewAuthor }>
               <div className={ starRatings } title={ `${r.get('rating')} stars` }></div>
-              <p className={ authorName }>{ r.get('author.username') }
+              <p className={ authorName }>{ r.get('author').get('username') }
                 <em className={ date }>{ getFormattedDate(r.get('created')) }</em>
               </p>
             </div>
