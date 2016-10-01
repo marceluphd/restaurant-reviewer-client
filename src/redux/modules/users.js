@@ -1,14 +1,15 @@
+require('es6-promise').polyfill();
 import axios from 'axios';
 import { hashHistory } from 'react-router';
 import { Map } from 'immutable';
 import { ROOT_URL } from '../../config/constants';
 
-const AUTH_USER = 'AUTH_USER';
-const UNAUTH_USER = 'UNAUTH_USER';
-const AUTH_ERROR = 'AUTH_ERROR';
-const FETCHING_USER = 'FETCHING_USER';
-const FETCHING_USER_FAILURE = 'FETCHING_USER_FAILURE';
-const FETCHING_USER_SUCCESS = 'FETCHING_USER_SUCCESS';
+export const AUTH_USER = 'AUTH_USER';
+export const UNAUTH_USER = 'UNAUTH_USER';
+export const AUTH_ERROR = 'AUTH_ERROR';
+export const FETCHING_USER = 'FETCHING_USER';
+export const FETCHING_USER_FAILURE = 'FETCHING_USER_FAILURE';
+export const FETCHING_USER_SUCCESS = 'FETCHING_USER_SUCCESS';
 
 // Actions
 export function authenticateUser () {
@@ -44,7 +45,7 @@ export function fetchingUserSuccess (user) {
   };
 }
 
-function unauthUser () {
+export function unauthUser () {
   return {
     type: UNAUTH_USER
   };
@@ -115,7 +116,7 @@ export function signoutUser () {
 
 export function signupUser ({username, email, password}) {
   return function (dispatch) {
-    axios.post(`${ROOT_URL}/api/users`, {username, email, password})
+    return axios.post(`${ROOT_URL}/api/users`, {username, email, password})
       .then((res) => {
         // If request is correct
         // Update the state (authenticated)
@@ -139,23 +140,25 @@ export function signupUser ({username, email, password}) {
 
 export function signinUser ({email, password}) {
   return function (dispatch) {
-    axios.post(`${ROOT_URL}/auth/signin`, {email, password})
+    return axios.post(`${ROOT_URL}/auth/signin`, {email, password})
       .then((res) => {
         // If request is correct
         // Update the state (authenticated)
         dispatch(authenticateUser());
         // Save JWT Token in localStorage
-        // console.log('Authed ', res.data);
         localStorage.setItem('token', res.data.token);
         // Redirect user after authenticated
         dispatch(fetchingUserSuccess(res.data.user));
         hashHistory.push('/create-review');
       })
       .catch((err) => {
-        // console.log('[signinUser err]', err);
         // If request is incorrect
         // Show user the error
-        dispatch(authenticationError(err.data.error || err.data));
+        let error;
+        if (err.data) {
+          error = err.data.error ? err.data.error : err.data;
+        }
+        dispatch(authenticationError(error));
       });
   };
 }

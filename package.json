@@ -10,12 +10,14 @@
     "fix": "eslint --fix src/.; exit 0",
     "production:run": "cd dist && http-server",
     "test": "mocha --require babel-core/register --require ignore-styles ./test/**/**/*.js",
-    "cover": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --compilers babel-core/register --require test/setup.js --recursive 'test/**/*.test.js' && open coverage/lcov-report/index.html"
+    "cover": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --compilers babel-core/register --require test/setup.js --recursive 'test/**/*.test.js'",
+    "cover:open": "open coverage/lcov-report/index.html"
   },
   "author": "Yuichi Hagio <yhagio87@gmail.com> (http://github.com/yhagio)",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.12.0",
+    "es6-promise": "^4.0.3",
     "immutable": "^3.8.1",
     "react": "^15.3.1",
     "react-dom": "^15.2.0",
@@ -44,7 +46,7 @@
     "html-webpack-plugin": "^2.22.0",
     "http-server": "^0.9.0",
     "ignore-styles": "^5.0.1",
-    "istanbul": "^0.4.5",
+    "istanbul": "^1.0.0-alpha.2",
     "jsdom": "^9.4.5",
     "mocha": "^3.0.2",
     "nock": "^8.0.0",
