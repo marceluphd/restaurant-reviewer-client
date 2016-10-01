@@ -1,0 +1,16 @@
+.baseButton {
+  margin: 10px;
+  width: 45px;
+  padding: 10px;
+}
+
+.baseButtonDesign {
+  background-color: #00bfff;
+  color: #fff;
+  font-size: 1.1em;
+}
+
+/* HOVER */
+.hoverButton {
+  box-shadow: 0 0 5px #555;
+}

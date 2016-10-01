@@ -8,9 +8,9 @@
   height: 35px;
   margin-top: 4px;
   border: none;
-  border-bottom: 1px solid deeppink;
+  border-bottom: 1px solid #c5c5c5;
   padding: 5px;
-  width: 100%; /* 140px; */
+  width: 100%;
   font-size: 1.1em;
   background: url('../../images/iconmonstr-magnifier-1-24.png') no-repeat right 5px center;
 }
@@ -20,13 +20,9 @@
   background: none;
 }
 
-@media only screen and (min-width: 400px) {
-
-}
-
 /* Category filter */
 select {
-  border: 1px solid deeppink;
+  border: 1px solid #c5c5c5;
   height: 45px;
   margin: 20px 0 20px 5px;
   padding-left: 10px;
@@ -34,14 +30,17 @@ select {
 
 /* Restaurant list */
 .restaurantCard {
-  border: 1px solid deeppink;
-  border-radius: 10px;
+  border: 1px solid #c5c5c5;
   margin: 10px 0;
   padding: 10px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  /*display: block;*/
+}
+
+.restaurantCard:hover,
+.restaurantCard:focus {
+  box-shadow: 5px 5px 7px #00bfff;
 }
 
 /* Restaurant Card */
@@ -52,8 +51,6 @@ select {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  /*display: inline-block;
-  padding-top: 15px;*/
 }
 
 .restaurantImage {
@@ -65,7 +62,6 @@ select {
   height: 100%;
   padding: 6px 4px 4px 8px;
   flex-grow: 2;
-  /*display: inline-block;*/
 }
 
 
@@ -163,15 +159,15 @@ select {
 .createReviewButton {
   margin: 10px 10px 30px 10px;
   width: 45px;
-  border: 2px solid deepskyblue;
   padding: 10px;
-  border-radius: 10px;
+  background-color: #00bfff;
+  color: #fff;
+  font-size: 1.1em;
 }
 
 .createReviewButton:focus,
 .createReviewButton:hover {
-  border: 2px solid orangered;
-  border-radius: 0px;
+  box-shadow: 0 0 5px #555;
 }
 
 .openHours {
@@ -190,17 +186,14 @@ select {
 
 .reviewItem {
   border: 1px solid #999;
-  border-radius: 10px;
   margin: 10px 0 0 0;
   padding: 0 0 0 10px;
   list-style-type: none;
-  /*display: flex;*/
 }
 
 .reviewComment {
   margin-bottom: -20px;
   padding-right: 2px;
-  /*flex-grow: 4;*/
 }
 
 .commentBody {
@@ -208,8 +201,6 @@ select {
 }
 
 .reviewAuthor {
-  /*flex-grow: 1;*/
-  /*padding-top: 10px;*/
   text-align: center;
 }
 

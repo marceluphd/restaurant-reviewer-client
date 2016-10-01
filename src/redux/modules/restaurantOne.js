@@ -13,7 +13,7 @@ function fetchingRestaurantOne () {
 }
 
 function fetchingRestaurantOneError (error) {
-  console.dir('Error', error)
+  // console.dir('Error', error)
   return {
     type: FETCHING_RESTAURANT_ONE_ERROR,
     error: 'Error on fethching the restaurant info'

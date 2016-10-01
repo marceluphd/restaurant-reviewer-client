@@ -42,6 +42,10 @@ When viewing a specific restaurant, current reviews are displayed along with a f
 - [ ] reviewForm form validations
 - [X] Minimize Assets, CSS, HTML, Javascript (Production)
 - [X] Image Optimized (ImageOptim)
+- [X] ESLint
+- [ ] CSS refactor
+- [ ] Unit testing
+- [ ] Browsers (Chrome, Firefox, Safari, Opera)
 
 Additionally:
 
@@ -50,8 +54,8 @@ Additionally:
 - [ ] Load More for Restaurants, Reviews
 - [ ] Component testing Enzyme
 - [ ] Redux testing
-- [ ] Styling with less SMACSS
-- [ ] POST CSS (Firefox, Chrome, Safari)
+- [ ] CSS: composes
+- [ ] Browser (Firefox, Chrome, Safari)
 
 
 

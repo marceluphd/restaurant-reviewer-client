@@ -38,56 +38,33 @@ export default function ReviewForm (props) {
           className={ titleLink }
           role="link">{ props.restaurant.get('name') }</Link>
       </h2>
-      <hr />
       <span id='errReviewForm' className='error'></span>
-      <label className={ labeled }>Review Comment<br />
-        <input
+      <label className={ labeled }>Write Review<br />
+        <textarea
           id='comment'
           name='comment'
           placeholder='comment'
           onChange={ (e) => props.updateComment(e.target.value) }
           className={ inputField }
-          type='text'
-          required={ true } />
+          rows='5'
+          required={ true } 
+          autoFocus="autofocus"></textarea>
       </label>
 
       <fieldset className={ starabilityBasic }>
         <legend>Rate this restaurant:</legend>
-        <input
-          tabIndex="-1"
-          type='radio'
-          id='first-rate5'
-          name='rating'
-          value='5'
-          onChange={ (e) => props.updateRating(e.target.value) } />
-        <label
-          htmlFor='first-rate5'
-          title='Amazing'>5 stars</label>
 
         <input
-          tabIndex="-1"
           type='radio'
-          id='first-rate4'
+          id='first-rate1'
           name='rating'
-          value='4'
+          value='1'
           onChange={ (e) => props.updateRating(e.target.value) } />
         <label
-          htmlFor='first-rate4'
-          title='Very good'>4 stars</label>
-
+          htmlFor='first-rate1'
+          title='Terrible'>1 star</label>
+        
         <input
-          tabIndex="-1"
-          type='radio'
-          id='first-rate3'
-          name='rating'
-          value='3'
-          onChange={ (e) => props.updateRating(e.target.value) } />
-        <label
-          htmlFor='first-rate3'
-          title='Average'>3 stars</label>
-
-        <input
-          tabIndex="-1"
           type='radio'
           id='first-rate2'
           name='rating'
@@ -98,15 +75,34 @@ export default function ReviewForm (props) {
           title='Not good'>2 stars</label>
 
         <input
-          tabIndex="-1"
           type='radio'
-          id='first-rate1'
+          id='first-rate3'
           name='rating'
-          value='1'
+          value='3'
           onChange={ (e) => props.updateRating(e.target.value) } />
         <label
-          htmlFor='first-rate1'
-          title='Terrible'>1 star</label>
+          htmlFor='first-rate3'
+          title='Average'>3 stars</label>
+
+        <input
+          type='radio'
+          id='first-rate4'
+          name='rating'
+          value='4'
+          onChange={ (e) => props.updateRating(e.target.value) } />
+        <label
+          htmlFor='first-rate4'
+          title='Very good'>4 stars</label>
+
+        <input
+          type='radio'
+          id='first-rate5'
+          name='rating'
+          value='5'
+          onChange={ (e) => props.updateRating(e.target.value) } />
+        <label
+          htmlFor='first-rate5'
+          title='Amazing'>5 stars</label>
 
       </fieldset>
 

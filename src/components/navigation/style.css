@@ -1,16 +1,12 @@
 header {
   max-width: 500px;
-  /*margin: 0 0 30px 0;*/
   margin: auto;
   margin-bottom: 30px;
 }
 
 .homeButton {
-  /*width: 45px;*/
-  /*border: 2px solid deepskyblue;*/
   padding: 10px;
   border: 1px solid #fff;
-  /*border-radius: 10px;*/
 }
 
 .homeIcon {
@@ -26,26 +22,19 @@ header {
 }
 
 .navLink {
-  margin: 10px;
-  width: 45px;
-  border: 2px solid deepskyblue;
-  padding: 10px;
-  border-radius: 10px;
+  composes: baseButton from 'styles/styles.css';
+  composes: baseButtonDesign from 'styles/styles.css';
+  font-size: 1em;
 }
 
 .homeButton:focus,
-.homeButton:hover {
-  border: 1px solid orangered;
-}
-
+.homeButton:hover,
 .navLink:focus,
 .navLink:hover {
-  border: 2px solid orangered;
-  border-radius: 0px;
+  box-shadow: 0 0 5px #555;
 }
 
 .homeButton:active,
 .navLink:active {
-  border: 2px solid mediumseagreen;
-  border-radius: 10px;
+  box-shadow: 0 0 5px mediumseagreen;
 }

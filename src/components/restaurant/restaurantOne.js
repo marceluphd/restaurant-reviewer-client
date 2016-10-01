@@ -26,7 +26,6 @@ RestaurantOne.propTypes = {
 };
 
 export default function RestaurantOne (props) {
-  
   // Render array of restaurant reviews
   function renderReviews () {
     if (props.restaurant.get('reviews').size > 0) {
@@ -72,7 +71,6 @@ export default function RestaurantOne (props) {
                 <p className={ address } >{ props.restaurant.get('address') }</p>
                 <p><strong>Open housrs:</strong></p>
                 
-
                 <div className={ openHours }>
                   <p>Mon: { props.restaurant.get('hours').get('mon_start') }:00 - { props.restaurant.get('hours').get('mon_end') }:00</p>
                   <p>Tue: { props.restaurant.get('hours').get('tue_start') }:00 - { props.restaurant.get('hours').get('tue_end') }:00</p>
@@ -83,7 +81,6 @@ export default function RestaurantOne (props) {
                   <p>Sun: { props.restaurant.get('hours').get('sun_start') }:00 - { props.restaurant.get('hours').get('sun_end') }:00</p>
                 </div>
 
-                
                 <div
                   className={ starRatings }
                   title={ `${Math.round(props.restaurant.get('total_ratings') / props.restaurant.get('reviews').size)} stars` }></div>
@@ -94,7 +91,6 @@ export default function RestaurantOne (props) {
                   : null } ({ props.restaurant.get('reviews').size } reviews)
                 </span>
                 
-                
               </div>
             </div>
 
@@ -104,13 +100,10 @@ export default function RestaurantOne (props) {
               to={ '/restaurants/' + props.restaurant.get('_id') + '/create-review' }
               className={ createReviewButton }
               role="link">Create Review</Link>
-            
-            
             <ul className={ reviewsList } >
               <h3>Reviews</h3>
               { renderReviews() }
             </ul>
-            
           </div> }
       </div>;
 }

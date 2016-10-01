@@ -13,6 +13,10 @@ const stopUglifyJSWarnings = new webpack.optimize.UglifyJsPlugin({
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/src/index.html',
   filename: 'index.html',
+  minify: {
+    removeComments: true,
+    collapseWhitespace: true
+  },
   inject: 'body'
 });
 

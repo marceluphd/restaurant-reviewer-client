@@ -58,13 +58,13 @@ export function fetchRestaurants () {
 function getFilteredRestaurants (restaurants, searchText, searchCategory) {
   if (searchText) {
     return restaurants.filter((r) => {
-      return (r.name.toLowerCase().indexOf(searchText.toLowerCase()) >= 0);
+      return (r.get('name').toLowerCase().indexOf(searchText.toLowerCase()) >= 0);
     });
   }
 
   if (searchCategory && searchCategory !== 'default') {
     return restaurants.filter((r) => {
-      return (r.category.toLowerCase().indexOf(searchCategory.toLowerCase()) >= 0);
+      return (r.get('category').toLowerCase().indexOf(searchCategory.toLowerCase()) >= 0);
     });
   }
 
@@ -106,14 +106,14 @@ export default function restaurants (state = initialState, action) {
       return state.merge({
         searchText: action.searchText,
         searchCategory: 'default',
-        filteredRes: getFilteredRestaurants(state.restaurants, action.searchText, null)
+        filteredRes: getFilteredRestaurants(state.get('restaurants'), action.searchText, null)
       });
 
     case FILTER_RESTAURANTS_CATEGORY :
       return state.merge({
         searchCategory: action.searchCategory,
         searchText: '',
-        filteredRes: getFilteredRestaurants(state.restaurants, null, action.searchCategory)
+        filteredRes: getFilteredRestaurants(state.get('restaurants'), null, action.searchCategory)
       });
 
     default :
