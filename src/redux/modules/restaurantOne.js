@@ -2,17 +2,17 @@ import axios from 'axios';
 import { Map } from 'immutable';
 import { ROOT_URL } from '../../config/constants';
 
-const FETCHING_RESTAURANT_ONE = 'FETCHING_RESTAURANT_ONE';
-const FETCHING_RESTAURANT_ONE_ERROR = 'FETCHING_RESTAURANT_ONE_ERROR';
-const FETCHING_RESTAURANT_ONE_SUCCESS = 'FETCHING_RESTAURANT_ONE_SUCCESS';
+export const FETCHING_RESTAURANT_ONE = 'FETCHING_RESTAURANT_ONE';
+export const FETCHING_RESTAURANT_ONE_ERROR = 'FETCHING_RESTAURANT_ONE_ERROR';
+export const FETCHING_RESTAURANT_ONE_SUCCESS = 'FETCHING_RESTAURANT_ONE_SUCCESS';
 
-function fetchingRestaurantOne () {
+export function fetchingRestaurantOne () {
   return {
     type: FETCHING_RESTAURANT_ONE
   };
 }
 
-function fetchingRestaurantOneError (error) {
+export function fetchingRestaurantOneError (error) {
   // console.dir('Error', error)
   return {
     type: FETCHING_RESTAURANT_ONE_ERROR,
@@ -20,7 +20,7 @@ function fetchingRestaurantOneError (error) {
   };
 }
 
-function fetchingRestaurantOneSuccess (restaurant) {
+export function fetchingRestaurantOneSuccess (restaurant) {
   return {
     type: FETCHING_RESTAURANT_ONE_SUCCESS,
     restaurant
@@ -30,13 +30,9 @@ function fetchingRestaurantOneSuccess (restaurant) {
 export function fetchRestaurantOne (id) {
   return function (dispatch) {
     dispatch(fetchingRestaurantOne());
-    axios.get(`${ROOT_URL}/api/restaurants/${id}`)
-      .then((res) => {
-        dispatch(fetchingRestaurantOneSuccess(res.data));
-      })
-      .catch((err) => {
-        dispatch(fetchingRestaurantOneError(err));
-      });
+    return axios.get(`${ROOT_URL}/api/restaurants/${id}`)
+      .then((res) => dispatch(fetchingRestaurantOneSuccess(res.data)))
+      .catch((err) => dispatch(fetchingRestaurantOneError(err)));
   };
 }
 
