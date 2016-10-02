@@ -1,3 +1,6 @@
+[![travis build](https://img.shields.io/travis/yhagio/restaurant-reviewer-client.svg?style=flat-square)](https://travis-ci.org/yhagio/restaurant-reviewer-client)
+
+
 ## Restaurant Reviewer
 Accessibility first restaurant reviewer application
 
