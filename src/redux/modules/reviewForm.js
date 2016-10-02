@@ -4,10 +4,10 @@ import { hashHistory } from 'react-router';
 import { ROOT_URL } from '../../config/constants';
 import { setHeaders } from '../../helpers/utils';
 
-const UPDATE_COMMENT = 'UPDATE_COMMENT';
-const UPDATE_RATING = 'UPDATE_RATING';
-const SUBMITTED_SUCCESSFULLY = 'SUBMITTED_SUCCESSFULLY';
-const SUBMISSION_ERROR = 'SUBMISSION_ERROR';
+export const UPDATE_COMMENT = 'UPDATE_COMMENT';
+export const UPDATE_RATING = 'UPDATE_RATING';
+export const SUBMITTED_SUCCESSFULLY = 'SUBMITTED_SUCCESSFULLY';
+export const SUBMISSION_ERROR = 'SUBMISSION_ERROR';
 
 // Actions
 export function updateComment (comment) {
@@ -19,20 +19,19 @@ export function updateComment (comment) {
 }
 
 export function updateRating (rating) {
-  // console.log('updateComment: ', rating);
   return {
     type: UPDATE_RATING,
     rating
   };
 }
 
-function submittedSuccessfully () {
+export function submittedSuccessfully () {
   return {
     type: SUBMITTED_SUCCESSFULLY
   };
 }
 
-function submissionError (error) {
+export function submissionError (error) {
   return {
     type: SUBMISSION_ERROR,
     error
@@ -63,7 +62,7 @@ export default function reviewFormReducer (state = initialState, action) {
       return state.merge({
         comment: '',
         rating: '',
-        restaurantId: ''
+        error: ''
       });
 
     case SUBMISSION_ERROR:
