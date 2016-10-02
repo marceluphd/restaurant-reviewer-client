@@ -10,7 +10,7 @@ Links.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired
 };
 
-function Links ({ isAuthenticated }) {
+export function Links ({ isAuthenticated }) {
   return isAuthenticated === true
     ? <div className={ floatRight }>
         <Link to='/signout' className={ navLink } role="link">Sign out</Link>
