@@ -1,12 +1,12 @@
 import { Map } from 'immutable';
 
-const UPDATE_USERNAME = 'UPDATE_USERNAME';
-const UPDATE_EMAIL = 'UPDATE_EMAIL';
-const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
+export const UPDATE_USERNAME = 'UPDATE_USERNAME';
+export const UPDATE_EMAIL = 'UPDATE_EMAIL';
+export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
 
-const USERNAME_ERROR = 'USERNAME_ERROR';
-const EMAIL_ERROR = 'EMAIL_ERROR';
-const PASSWORD_ERROR = 'PASSWORD_ERROR';
+export const USERNAME_ERROR = 'USERNAME_ERROR';
+export const EMAIL_ERROR = 'EMAIL_ERROR';
+export const PASSWORD_ERROR = 'PASSWORD_ERROR';
 
 // Actions
 export function updateUsername (username) {
@@ -31,21 +31,21 @@ export function updatePassword (password) {
 }
 
 // Form Error Actions
-export function warnUsernameError() {
+export function warnUsernameError () {
   return {
     type: USERNAME_ERROR,
     usernameError: 'Username is required'
   };
 }
 
-export function warnEmailError() {
+export function warnEmailError () {
   return {
     type: EMAIL_ERROR,
     emailError: 'Email is required'
   };
 }
 
-export function warnPasswordError() {
+export function warnPasswordError () {
   return {
     type: PASSWORD_ERROR,
     passwordError: 'Password is required'
@@ -56,10 +56,9 @@ const initialState = Map({
   username: '',
   email: '',
   password: '',
-
   usernameError: '',
   emailError: '',
-  passwordError: '',
+  passwordError: ''
 });
 
 // reducer
