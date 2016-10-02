@@ -47,7 +47,7 @@ export function getFormattedDate (rawDate) {
   return `${month} ${day}, ${year}`;
 }
 
-function numToMonth(month) {
+export function numToMonth(month) {
   switch(month){
     case 1:
       return 'Jan';

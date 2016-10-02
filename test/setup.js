@@ -15,6 +15,10 @@ var exposedProperties = ['window', 'navigator', 'document'];
 global.document = jsdom('');
 global.window = document.defaultView;
 global.localStorage = {
+  getItem: function(item) {
+    if (!item) return false;
+    return item;
+  },
   removeItem: function(item) {
     console.log(item);
   }
