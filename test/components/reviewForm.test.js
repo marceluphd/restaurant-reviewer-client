@@ -2,7 +2,7 @@ import React from 'react';
 import { Map } from 'immutable';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import ReviewForm from '../../src/components/restaurant/reviewForm';
+import ReviewForm from '../../src/components/reviewForm/reviewForm';
 
 describe('Component: ReviewForm ', () => {
   it('should display Fetching when fetching the data');
