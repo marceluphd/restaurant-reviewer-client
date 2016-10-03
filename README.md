@@ -51,16 +51,12 @@ npm run start
 ```
 
 #### Testing
+- [Mocha](https://mochajs.org/)
+- [Chai - Expect](http://chaijs.com/api/bdd/)
+- [Sinon - spy](http://sinonjs.org/docs/#spies)
+- [Enzyme - shallow()](https://github.com/airbnb/enzyme/blob/master/docs/api/shallow.md)
 ```
 npm run test
-```
-Karma Testing
-```
-npm i -D karma karma-chai karma-chrome-launcher karma-firefox-launcher karma-safari-launcher karma-opera-launcher karma-coverage karma-mocha karma-webpack
-
-npm i -D babel-plugin-__coverage__ webpack@2.1.0-beta.25 webpack-dev-server@2.1.0-beta.6
-
-npm run test:karma
 ```
 
 ### Resources
