@@ -1,8 +1,13 @@
-[![travis build](https://img.shields.io/travis/yhagio/restaurant-reviewer-client.svg?style=flat-square)](https://travis-ci.org/yhagio/restaurant-reviewer-client)
-
-
 ## Restaurant Reviewer
 Accessibility first restaurant reviewer application
+
+[![travis build](https://img.shields.io/travis/yhagio/restaurant-reviewer-client.svg?style=flat-square)](https://travis-ci.org/yhagio/restaurant-reviewer-client)
+
+## Browsers support <sub><sup><sub><sub>made by <a href="https://godban.github.io">godban</a></sub></sub></sup></sub>
+
+| [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/firefox.png" alt="Firefox" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/chrome.png" alt="Chrome" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/safari.png" alt="Safari" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/opera.png" alt="Opera" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Opera |
+| --------- | --------- | --------- | --------- |
+| last version| last version| last version| last version
 
 ### [DEMO](https://res-rev.firebaseapp.com)
 
@@ -10,6 +15,7 @@ Accessibility first restaurant reviewer application
 - Built with React, Redux, React-Router, Immutable.js
 - User authentication with JWT
 - User can access via keyboards only or screen reader (ARIA)
+- Full keyboard tab navigatable (Chrome, Opera)
 - 5 Star rating system (HTML, CSS only)
 - Simple search and filter for finding restaurants
 
