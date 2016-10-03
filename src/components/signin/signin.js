@@ -23,7 +23,7 @@ Signin.propTypes = {
   warnPasswordError: func.isRequired
 }
 
-function SubmitButton (props) {
+export function SubmitButton (props) {
   if (
     props.emailError ||
     props.passwordError

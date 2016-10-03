@@ -28,7 +28,7 @@ Signup.propTypes = {
   warnPasswordError: func.isRequired
 }
 
-function SubmitButton (props) {
+export function SubmitButton (props) {
   if (
     props.usernameError ||
     props.emailError ||
