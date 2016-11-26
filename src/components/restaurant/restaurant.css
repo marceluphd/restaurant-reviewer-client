@@ -35,13 +35,26 @@ select {
 /************************
   Restaurant list
 *************************/
+.restaurantsBox {
+  text-align: center;
+}
+
 .restaurantCard {
   border: 1px solid #c5c5c5;
-  margin: 10px 0;
+  margin: 0;
   padding: 10px;
+  width: 300px;
+  max-height: 171px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.restuarantsListBox {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
 }
 
 .restaurantCard:hover,
@@ -49,6 +62,23 @@ select {
   box-shadow: 5px 5px 7px #00bfff;
 }
 
+@media screen and (max-width: 939px) {
+  .restaurantCard {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .restaurantCard {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .restaurantCard {
+    width: 100%;
+  }
+}
 /************************
   Restaurant Card
 *************************/
@@ -68,10 +98,9 @@ select {
 
 .restoBox {
   height: 100%;
-  padding: 6px 4px 4px 8px;
+  padding: 6px 4px 0px 8px;
   flex-grow: 2;
 }
-
 
 .restoBox h4 {
   line-height: 1;
@@ -147,17 +176,28 @@ select {
 /************************
   Restaurant One Page 
 *************************/
-.restaurantBox {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+.title {
+  line-height: 0;
 }
 
 .photoBoxOne {
   min-height: 100%;
-  flex-grow: 1;
-  display: flex;
-  padding-top: 30px;
+  padding: 15px;
+  max-width: 250px;
+  vertical-align: top;
+  margin: auto;
+  transition: all 0.5s ease;
+}
+
+.restaurantImageOnePage {
+  max-width: 100%;
+  max-height: 250px;
+  transition: all 0.5s ease;
+}
+
+.restoBoxOne {
+  display: inline-block;
+  transition: all 0.5s ease;
 }
 
 .address {
@@ -180,12 +220,41 @@ select {
 
 .openHours {
   margin: 5px 0 0 0;
+  line-height: 0.5;
 }
 
 .openHours p {
   margin-left: 20px;
 }
 
+@media screen and (min-width: 460px) {
+  .photoBoxOne {
+    width: 150px;
+    display: inline-block;
+    transition: all 0.5s ease;
+  }
+
+  .restoBoxOne {
+    display: inline-block;
+    font-size: 0.9em;
+    transition: all 0.5s ease;
+  }
+}
+
+@media screen and (min-width: 608px) {
+  .photoBoxOne {
+    width: 250px;
+    display: inline-block;
+    margin-right: 20px;
+    transition: all 0.5s ease;
+  }
+
+  .restoBoxOne {
+    display: inline-block;
+    font-size: 1em;
+    transition: all 0.5s ease;
+  }
+}
 /************************
   Reviews List 
 *************************/

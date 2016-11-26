@@ -5,8 +5,6 @@
 }
 
 .baseButtonDesign {
-  background-color: #00bfff;
-  color: #fff;
   font-size: 1.1em;
 }
 
@@ -16,6 +14,8 @@
 *************************/
 .authForm {
   padding-top: 20px; 
+  max-width: 600px;
+  margin: auto;
 }
 
 .labeled {
@@ -38,29 +38,27 @@
 
 .inputField:focus,
 .inputField:hover {
-  box-shadow: 0 0 10px orangered;
+  box-shadow: 0 0 10px #da1b1b;
 }
 
 .submitButton {
   width: 130px;
   height: 50px;
-  border: none;
+  border: 1px solid limegreen;
   margin: 15px 0 10px 0;
   padding: 10px;
-  background-color: limegreen;
-  font-size: 1.2em;
-   color: #fff;
+  background-color: transparent;
+  color: limegreen;
 }
 
 .noSubmit {
   width: 130px;
   height: 50px;
-  border: none;
+  border: 1px solid #da1b1b;
   margin: 15px 0 10px 0;
   padding: 10px;
-  background-color: orangered;
-  font-size: 1.2em;
-  color: #fff;
+  background-color: transparent;
+  color: #da1b1b;
 }
 
 .submitButton:active {

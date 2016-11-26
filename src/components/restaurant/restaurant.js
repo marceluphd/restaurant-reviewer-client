@@ -5,6 +5,8 @@ const { func, array } = PropTypes;
 import {
   searchLabel,
   searchInput,
+  restaurantsBox,
+  restuarantsListBox,
   restaurantCard,
   restaurantImage,
   photoBox,
@@ -48,7 +50,7 @@ export default function Restaurant (props) {
           value={ props.searchCategory }
           onChange={ (e) => props.filterRestaurantsByCategory(e.target.value) } >
 
-          <option value='default'>Select ▼</option>
+          <option value='default'>ALL</option>
           <option value='French'>French</option>
           <option value='Japanese'>Japanese</option>
           <option value='Mexican'>Mexican</option>
@@ -56,6 +58,7 @@ export default function Restaurant (props) {
 
         </select>
 
+        <div className={ restaurantsBox }>
         { props.restaurants.map((res) => (
           <Link
             to={ `restaurants/${res.get('_id')}` }
@@ -63,29 +66,30 @@ export default function Restaurant (props) {
             className={ restaurantCard }
             role="button">
 
-            <div className={ photoBox }>
-              <img
-                src={ res.get('photo') }
-                alt={ `Photo of ${res.get('name')}` }
-                className={ restaurantImage }/>
+            <div className={ restuarantsListBox } >
+              <div className={ photoBox }>
+                <img
+                  src={ res.get('photo') }
+                  alt={ `Photo of ${res.get('name')}` }
+                  className={ restaurantImage }/>
+              </div>
+
+              <div className={ restoBox }>
+                <h4>{ res.get('name') }</h4>
+                <p>{ res.get('category') }</p>
+                <p>{ res.get('address') }</p>
+                <div
+                  className={ starRatings }
+                  title={ `${Math.round(res.get('total_ratings') / res.get('reviews').size)} stars` }></div>
+                <span>
+                  { (res.get('total_ratings') === 0)
+                  ? 'N/A'
+                  : null } <span className={ reviewCount }>({ res.get('reviews').size } reviews)</span>
+                </span>
+              </div>
             </div>
-
-            <div className={ restoBox }>
-              <h4>{ res.get('name') }</h4>
-              <p>{ res.get('category') }</p>
-              <p>{ res.get('address') }</p>
-              <div
-                className={ starRatings }
-                title={ `${Math.round(res.get('total_ratings') / res.get('reviews').size)} stars` }></div>
-              <span>
-                { (res.get('total_ratings') === 0)
-                ? 'N/A'
-                : null } <span className={ reviewCount }>({ res.get('reviews').size } reviews)</span>
-              </span>
-
-            </div>
-
           </Link>
         )) }
+        </div>
       </div>;
 }

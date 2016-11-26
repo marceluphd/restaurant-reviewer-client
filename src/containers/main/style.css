@@ -1,12 +1,13 @@
 /* Main Contetn Area */
-
 .wrapper {
-
+  margin: 0;
+  padding: 0;
 }
 
 main {
-  max-width: 500px;
+  max-width: 1000px;
   margin: auto;
+  padding: 20px;
 }
 
 /* Footer */

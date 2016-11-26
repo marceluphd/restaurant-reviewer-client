@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import {
-  restaurantImage,
-  restoBox,
+  restaurantImageOnePage,
+  title,
+  restoBoxOne,
   starRatings,
   createReviewButton,
   openHours,
-  restaurantBox,
   photoBoxOne,
   address,
   reviewsList,
@@ -56,54 +56,47 @@ export default function RestaurantOne (props) {
         { props.restaurant.size !== 9
           ? <p>{ 'N/A' }</p>
           : <div>
-
-            <h3>{ props.restaurant.get('name') }</h3>
-
-            <div className={ restaurantBox }>
-              <div className={ photoBoxOne }>
-                <img
-                  src={ props.restaurant.get('photo') }
-                  alt={ `Photo of ${props.restaurant.get('name')}` }
-                  className={ restaurantImage }/>
-              </div>
-              <div className={ restoBox }>
-                <p><strong>Address:</strong></p>
-                <p className={ address } >{ props.restaurant.get('address') }</p>
-                <p><strong>Open housrs:</strong></p>
-                
-                <div className={ openHours }>
-                  <p>Mon: { props.restaurant.get('hours').get('mon_start') }:00 - { props.restaurant.get('hours').get('mon_end') }:00</p>
-                  <p>Tue: { props.restaurant.get('hours').get('tue_start') }:00 - { props.restaurant.get('hours').get('tue_end') }:00</p>
-                  <p>Wed: { props.restaurant.get('hours').get('wed_start') }:00 - { props.restaurant.get('hours').get('wed_end') }:00</p>
-                  <p>Thu: { props.restaurant.get('hours').get('thu_start') }:00 - { props.restaurant.get('hours').get('thu_end') }:00</p>
-                  <p>Fri: { props.restaurant.get('hours').get('fri_start') }:00 - { props.restaurant.get('hours').get('fri_end') }:00</p>
-                  <p>Sat: { props.restaurant.get('hours').get('sat_start') }:00 - { props.restaurant.get('hours').get('sat_end') }:00</p>
-                  <p>Sun: { props.restaurant.get('hours').get('sun_start') }:00 - { props.restaurant.get('hours').get('sun_end') }:00</p>
+              <h3 className={ title }>{ props.restaurant.get('name') }</h3>
+              <div>
+                <div className={ photoBoxOne }>
+                  <img
+                    src={ props.restaurant.get('photo') }
+                    alt={ `Photo of ${props.restaurant.get('name')}` }
+                    className={ restaurantImageOnePage }/>
                 </div>
-
-                <div
-                  className={ starRatings }
-                  title={ `${Math.round(props.restaurant.get('total_ratings') / props.restaurant.get('reviews').size)} stars` }></div>
-                
-                <span>
-                  { (props.restaurant.get('total_ratings') === 0)
-                  ? 'N/A'
-                  : null } ({ props.restaurant.get('reviews').size } reviews)
-                </span>
-                
+                <div className={ restoBoxOne }>
+                  <p><strong>Address:</strong></p>
+                  <p className={ address } >{ props.restaurant.get('address') }</p>
+                  <p><strong>Open housrs:</strong></p>
+                  <div className={ openHours }>
+                    <p>Mon: { props.restaurant.get('hours').get('mon_start') }:00 - { props.restaurant.get('hours').get('mon_end') }:00</p>
+                    <p>Tue: { props.restaurant.get('hours').get('tue_start') }:00 - { props.restaurant.get('hours').get('tue_end') }:00</p>
+                    <p>Wed: { props.restaurant.get('hours').get('wed_start') }:00 - { props.restaurant.get('hours').get('wed_end') }:00</p>
+                    <p>Thu: { props.restaurant.get('hours').get('thu_start') }:00 - { props.restaurant.get('hours').get('thu_end') }:00</p>
+                    <p>Fri: { props.restaurant.get('hours').get('fri_start') }:00 - { props.restaurant.get('hours').get('fri_end') }:00</p>
+                    <p>Sat: { props.restaurant.get('hours').get('sat_start') }:00 - { props.restaurant.get('hours').get('sat_end') }:00</p>
+                    <p>Sun: { props.restaurant.get('hours').get('sun_start') }:00 - { props.restaurant.get('hours').get('sun_end') }:00</p>
+                  </div>
+                  <div
+                    className={ starRatings }
+                    title={ `${Math.round(props.restaurant.get('total_ratings') / props.restaurant.get('reviews').size)} stars` }></div>
+                  <span>
+                    { (props.restaurant.get('total_ratings') === 0)
+                    ? 'N/A'
+                    : null } ({ props.restaurant.get('reviews').size } reviews)
+                  </span>
+                </div>
               </div>
-            </div>
-
-            <br /><br />
-
-            <Link
-              to={ '/restaurants/' + props.restaurant.get('_id') + '/create-review' }
-              className={ createReviewButton }
-              role="link">Create Review</Link>
-            <ul className={ reviewsList } >
-              <h3>Reviews</h3>
-              { renderReviews() }
-            </ul>
-          </div> }
+              <br />
+              <br />
+              <Link
+                to={ '/restaurants/' + props.restaurant.get('_id') + '/create-review' }
+                className={ createReviewButton }
+                role="link">Create Review</Link>
+              <ul className={ reviewsList } >
+                <h3>Reviews</h3>
+                { renderReviews() }
+              </ul>
+            </div> }
       </div>;
 }

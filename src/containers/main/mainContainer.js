@@ -13,7 +13,6 @@ const MainContainer = React.createClass({
     return (
       <div className={ wrapper }>
         <Navigation isAuthenticated={ this.props.isAuthenticated }/>
-        
         <main>
           { this.props.children }
         </main>
@@ -30,7 +29,7 @@ const MainContainer = React.createClass({
               href='https://github.com/yhagio'
               className={ nameLink }
               target='_blank'
-              role="link">Yuichi Hagio</a>
+              role='link'>Yuichi Hagio</a>
           </p>
         </footer>
       </div>

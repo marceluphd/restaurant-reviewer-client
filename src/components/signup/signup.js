@@ -75,8 +75,8 @@ export default function Signup (props) {
             required={ true }
             autoFocus={ true } />
         </label>
-        <span className={ error }>{ props.usernameError ? props.usernameError: ''}</span>
-        
+        <span className={ error }>{ props.usernameError ? props.usernameError : '' }</span>
+
         <label className={ labeled }>Email<br />
           <input
             id='signUpEmail'
@@ -88,7 +88,7 @@ export default function Signup (props) {
             onBlur={ (e) => e.target.value.length === 0 ? props.warnEmailError(e.target.value): null } 
             required={ true } />
         </label>
-        <span className={ error }>{ props.emailError ? props.emailError: ''}</span>
+        <span className={ error }>{ props.emailError ? props.emailError : '' }</span>
 
         <label className={ labeled }>Password<br />
           <input
@@ -101,7 +101,7 @@ export default function Signup (props) {
             onBlur={ (e) => e.target.value.length === 0 ? props.warnPasswordError(e.target.value): null } 
             required={ true } />
         </label>
-        <span className={ error }>{ props.passwordError ? props.passwordError: ''}</span>
+        <span className={ error }>{ props.passwordError ? props.passwordError : '' }</span>
 
         <br />
         <SubmitButton
@@ -109,8 +109,7 @@ export default function Signup (props) {
           emailError={ props.emailError }
           passwordError={ props.passwordError } /><br />
 
-        <span className={ error }>{ props.errorMessage ? props.errorMessage: ''}</span><br />
-
+        <span className={ error }>{ props.errorMessage ? props.errorMessage : '' }</span><br />
     </form>
-  )
+  );
 };
